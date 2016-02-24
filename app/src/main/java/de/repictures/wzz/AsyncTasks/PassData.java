@@ -1,11 +1,16 @@
 package de.repictures.wzz.AsyncTasks;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,11 +43,15 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
     private String resp = "";
     private int platform = 0;
     private Boolean firstConnect;
+    private final ProgressBar progressbar;
+    private final ImageView check;
+    private final int crazyValue;
     private String devise;
     URLConnection urlConnection;
 
     public PassData(String email, String name, int platform, String personPic, String coverUrl, Activity activity,
-                    boolean firstConnect, String devise) {
+                    boolean firstConnect, String devise, ProgressBar progressbar, ImageView check,
+                    int crazyValue) {
         this.email = email;
         this.name = name;
         this.personPic = personPic;
@@ -50,6 +59,9 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
         this.activity = activity;
         this.platform = platform;
         this.firstConnect = firstConnect;
+        this.progressbar = progressbar;
+        this.check = check;
+        this.crazyValue = crazyValue;
         this.devise = getDevise(devise);
     }
 
@@ -81,7 +93,8 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
                     + "&coverUrl=" + coverUrl
                     + "&platform=" + platform
                     + "&devise=" + devise
-                    + "&key=" + liesKey());
+                    + "&key=" + liesKey()
+                    + "&count=" + crazyValue);
             Log.i(TAG, "doInBackground: " + url);
             urlConnection = url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
@@ -123,9 +136,26 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
                 editor.putBoolean("isSignedIn", true);
                 editor.putInt("platform", platform);
                 editor.apply();
-                Intent i = new Intent(activity, StartActivity.class);
-                activity.finish();
-                activity.startActivity(i);
+                int shortAnimTime = activity.getResources().getInteger(android.R.integer.config_shortAnimTime);
+                progressbar.animate().setDuration(shortAnimTime).alpha(0f).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        progressbar.setVisibility(View.INVISIBLE);
+
+                    }
+                }).start();
+                check.setVisibility(View.VISIBLE);
+                check.animate().setDuration(shortAnimTime).alpha(1f).start();
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(activity, SplashActivity.class);
+                        activity.finish();
+                        activity.startActivity(i);
+                    }
+                }, 1200);
             }
             if (resp != ""){
                 //Toast.makeText(activity, "Profile updated", Toast.LENGTH_SHORT).show();

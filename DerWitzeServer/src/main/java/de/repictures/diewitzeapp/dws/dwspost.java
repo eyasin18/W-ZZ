@@ -113,7 +113,7 @@ public class dwspost extends HttpServlet {
                 new getProfile(datastore, key, email, resp);
                 break;
             case 7: //Profil hinzufügen
-                new postPlatformProfile(datastore, user, email, photoUrl, coverUrl, devise, isEmail, platform, resp);
+                new postPlatformProfile(datastore, user, email, photoUrl, coverUrl, devise, isEmail, platform, count, resp);
                 break;
             case 8: //Witz melden
                 new postReport(datastore, key, profileKey, inhalt, resp);

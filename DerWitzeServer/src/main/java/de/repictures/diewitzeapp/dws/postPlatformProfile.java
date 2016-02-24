@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class postPlatformProfile {
     public postPlatformProfile(DatastoreService datastore, String user, String email,
                                String photoUrl, String coverUrl, String devise, Boolean isEmail,
-                               int platform, HttpServletResponse resp) throws IOException {
+                               int platform, int count, HttpServletResponse resp) throws IOException {
         Key personKey = KeyFactory.createKey("email", email);
         Query query = new Query("profile", personKey);
         List<Entity> profiles = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
@@ -38,7 +38,7 @@ public class postPlatformProfile {
             userProfile.setProperty("coverUrl", coverUrl);
             userProfile.setProperty("platform", platform);
             userProfile.setProperty("devise", "Hi <3");
-            userProfile.setProperty("crazyValue", 50);
+            userProfile.setProperty("crazyValue", count);
             userProfile.setProperty("isEmail", isEmail);
             ArrayList<String> voted = new ArrayList<>();
             voted.add("blub");

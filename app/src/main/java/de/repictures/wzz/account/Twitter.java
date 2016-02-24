@@ -1,6 +1,7 @@
 package de.repictures.wzz.account;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.twitter.sdk.android.core.models.User;
 
 import de.repictures.wzz.AsyncTasks.PassData;
 import de.repictures.wzz.R;
+import de.repictures.wzz.StartActivity;
 import retrofit.http.GET;
 import retrofit.http.Query;
 
@@ -34,10 +36,15 @@ public class Twitter {
                                 + "~" + result.data.profileBannerUrl
                                 + "~" + result.data.name
                                 + "~" + result.data.idStr);
-                        PassData mAuthTask = new PassData(result.data.idStr, result.data.name,
+                        String[] data = {result.data.idStr, result.data.name,
+                                "1", profilePic, result.data.profileBannerUrl, "true", null};
+                        Intent i = new Intent(activity, StartActivity.class);
+                        i.putExtra("data", data);
+                        activity.startActivity(i);
+                        /*PassData mAuthTask = new PassData(result.data.idStr, result.data.name,
                                 1, profilePic, result.data.profileBannerUrl,
                                 activity, true, null);
-                        mAuthTask.execute((Void) null);
+                        mAuthTask.execute((Void) null);*/
                     }
 
                     @Override

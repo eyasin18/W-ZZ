@@ -1,25 +1,33 @@
 package de.repictures.wzz;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.view.Window;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class StartActivity extends AppCompatActivity {
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.Arrays;
 
+public class StartActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = "StartActivity";
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -29,6 +37,10 @@ public class StartActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private TextView like, dislike;
+    public ProgressBar progressBar;
+    int progress = 0;
+    int[] likes = new int[5];
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -37,6 +49,12 @@ public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+            Slide slide = new Slide();
+            slide.setSlideEdge(Gravity.LEFT);
+            getWindow().setExitTransition(slide);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
@@ -45,44 +63,66 @@ public class StartActivity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        like = (TextView) findViewById(R.id.start_like);
+        dislike = (TextView) findViewById(R.id.start_dislike);
+        like.setOnClickListener(this);
+        dislike.setOnClickListener(this);
+        progressBar = (ProgressBar) findViewById(R.id.start_progressbar);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_start, menu);
-        return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.start_like:
+                if (progress != 80) {
+                    likes[progress/20] = 1;
+                    progress += 20;
+                    mViewPager.setCurrentItem((progress/20));
+                    progressBar.setProgress(progress);
+                } else {
+                    likes[progress/20] = 1;
+                    Log.d(TAG, "onClick: " + Arrays.toString(likes));
+                    Intent i = new Intent(this, ApplyActivity.class);
+                    i.putExtra("likes", likes);
+                    i.putExtra("data", getIntent().getStringArrayExtra("data"));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        finish();
+                        startActivity(i,
+                                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                    } else {
+                        finish();
+                        startActivity(i);
+                    }
+                }
+                break;
+            case R.id.start_dislike:
+                if (progress != 80) {
+                    likes[progress/20] = 0;
+                    progress += 20;
+                    progressBar.setProgress(progress);
+                    mViewPager.setCurrentItem((progress/20));
+                } else {
+                    likes[progress/20] = 0;
+                    Log.d(TAG, "onClick: " + Arrays.toString(likes));
+                    Intent i = new Intent(this, ApplyActivity.class);
+                    i.putExtra("likes", likes);
+                    i.putExtra("data", getIntent().getStringArrayExtra("data"));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        finish();
+                        startActivity(i,
+                                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                    } else {
+                        finish();
+                        startActivity(i);
+                    }
+                }
+                break;
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -114,8 +154,28 @@ public class StartActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_start, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            TextView textView = (TextView) rootView.findViewById(R.id.start_wizzle);
+            String wizzle = getResources().getString(R.string.error);
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)){
+                case 1:
+                    wizzle = getResources().getString(R.string.bsp_joke_1);
+                    break;
+                case 2:
+                    wizzle = getResources().getString(R.string.bsp_joke_2);
+                    break;
+                case 3:
+                    wizzle = getResources().getString(R.string.bsp_joke_3);
+                    break;
+                case 4:
+                    wizzle = getResources().getString(R.string.bsp_joke_4);
+                    break;
+                case 5:
+                    wizzle = getResources().getString(R.string.bsp_joke_5);
+                    break;
+            }
+            try {
+                textView.setText(URLDecoder.decode(wizzle, "UTF-8"));
+            } catch (UnsupportedEncodingException ignore) {}
             return rootView;
         }
     }
@@ -140,7 +200,7 @@ public class StartActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 5;
         }
 
         @Override
@@ -152,6 +212,10 @@ public class StartActivity extends AppCompatActivity {
                     return "SECTION 2";
                 case 2:
                     return "SECTION 3";
+                case 3:
+                    return "SECTION 4";
+                case 4:
+                    return "SECTION 5";
             }
             return null;
         }

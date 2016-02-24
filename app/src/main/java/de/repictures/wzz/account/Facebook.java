@@ -1,6 +1,7 @@
 package de.repictures.wzz.account;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -18,6 +19,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 import de.repictures.wzz.AsyncTasks.PassData;
+import de.repictures.wzz.StartActivity;
 
 public class Facebook {
 
@@ -52,10 +54,15 @@ public class Facebook {
                                         JSONObject JOSource = jsonObject.optJSONObject("cover");
                                         coverUrl = JOSource.getString("source");
                                         Log.d("facebook", email + "~" + personName + "~" + personPhotoUrl + " ~ " + coverUrl);
-                                        PassData mAuthTask = new PassData(email, personName,
+                                        String[] data = {email, personName,
+                                                "2", personPhotoUrl, coverUrl, "true", null};
+                                        Intent i = new Intent(activity, StartActivity.class);
+                                        i.putExtra("data", data);
+                                        activity.startActivity(i);
+                                        /*PassData mAuthTask = new PassData(email, personName,
                                                 2, personPhotoUrl, coverUrl,
                                                 activity, true, null);
-                                        mAuthTask.execute((Void) null);
+                                        mAuthTask.execute((Void) null);*/
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }

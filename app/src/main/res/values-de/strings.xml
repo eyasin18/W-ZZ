@@ -23,7 +23,7 @@
     <string name="title_activity_acc">Profil</string>
     <string name="title_activity_com_katego">ComKatego</string>
     <string name="title_activity_login">Anmelden</string>
-    <string name="title_activity_start">Lustige Witze</string>
+    <string name="title_activity_start">Registrierung abschließen…</string>
 
     <array name="classes">
         <item>Kurze Witze</item>
@@ -163,4 +163,14 @@
     <string name="no_more_jokes">Sei gegrüßt!</string>
     <string name="subscribed">Abonniert</string>
     <string name="unsubscribed">Deabonniert</string>
+    <string name="back">Zurück</string>
+    <string name="like">Mag ich</string>
+    <string name="login_quote"></string>
+    <string name="not_like">Mag ich nicht</string>
+    <string name="wich_joke">Gefällt dir dieser Wizzle?</string>
+    <string name="bsp_joke_1">Habe mir mit mEiner freundin aLle twilight Filme ausgeliehen, besTe sache die Mir passIeRen kann!</string>
+    <string name="bsp_joke_2">Kein Rapper dieser Welt toppt meine Mutter wenn sie schimpft!</string>
+    <string name="bsp_joke_3">\"Meine Frau hat heute eine Zitterspinne in unserer Badewann entdeckt.\", teilte ich meinem Kumpel Pablo mit. \"Was ist denn das?\", fragte er.\n\n\"Ach, das ist so eine große weiße Schüssel, in der wir uns waschen.\"</string>
+    <string name="bsp_joke_4">Dieser Moment wenn du auf der Arbeit Witze liest und fast die Landebahn verfehlst.</string>
+    <string name="bsp_joke_5">Wenn du dich dumm fühlst, denk einfach daran: Manchmal greifen Faultiere ihre Arme, weil die wie Äste aussehen an denen sie sich festhalen können. Danach fallen sie vom Baum und sterben.</string>
 </resources>

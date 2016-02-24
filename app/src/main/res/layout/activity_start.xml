@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/white"
     tools:context="de.repictures.wzz.StartActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/PlaceholderTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -27,18 +27,79 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/container"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_marginTop="56dp">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wich_joke"
+            android:layout_centerHorizontal="true"
+            android:padding="16dp"
+            android:textColor="#212121"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:id="@+id/start_title"/>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="80"
+            android:id="@+id/start_progressbar"
+            android:paddingLeft="64dp"
+            android:paddingRight="64dp"
+            android:progressTint="@color/colorPrimaryLight"
+            android:layout_below="@+id/start_title"
+            android:indeterminate="false" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/start_progressbar"
+            android:layout_above="@+id/start_bottom_bar"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:id="@+id/start_bottom_bar"
+            android:background="@color/gray"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:id="@+id/start_dislike"
+                android:text="@string/not_like"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                android:background="#9E9E9E"
+                android:padding="4dp"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:id="@+id/start_like"
+                android:text="@string/like"
+                android:background="?android:attr/selectableItemBackground"/>
+
+        </LinearLayout>
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

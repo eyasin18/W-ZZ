@@ -40,7 +40,7 @@ public class MyProfileAboutFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         PassData mAuthTask = new PassData(getProfile.infos[2], nameEdit.getText().toString(),
                 Integer.parseInt(getProfile.infos[3]), SplashActivity.picUrl, SplashActivity.coverUrl,
-                getActivity(), false, statusEdit.getText().toString());
+                getActivity(), false, statusEdit.getText().toString(), null, null, 0);
         mAuthTask.execute((Void) null);
     }
 }

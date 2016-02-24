@@ -1,12 +1,14 @@
 package de.repictures.wzz.account;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.android.gms.plus.model.people.Person;
 
 import de.repictures.wzz.AsyncTasks.PassData;
 import de.repictures.wzz.R;
+import de.repictures.wzz.StartActivity;
 
 public class GooglePlus {
 
@@ -37,8 +39,13 @@ public class GooglePlus {
                 + "~" + person.getId());
         String personName = person.getDisplayName();
         String profilePic = person.getImage().getUrl().substring(0, personName.length() - 2) + 500;
-        PassData mAuthTask = new PassData(person.getId(), personName,
+        String[] data = {person.getId(), personName,
+                "3", profilePic, coverUrl, "true", null};
+        Intent i = new Intent(activity, StartActivity.class);
+        i.putExtra("data", data);
+        activity.startActivity(i);
+        /*PassData mAuthTask = new PassData(person.getId(), personName,
                 3, profilePic, coverUrl, activity, true, null);
-        mAuthTask.execute((Void) null);
+        mAuthTask.execute((Void) null);*/
     }
 }
