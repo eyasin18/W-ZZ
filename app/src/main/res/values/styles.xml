@@ -1,0 +1,83 @@
+<resources>
+
+    <style name="KategoTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorPrimaryDark">#0097A7</item>
+        <item name="colorAccent">#FFEB3B</item>
+    </style>
+
+    <style name="LoginTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorPrimaryDark">#0097A7</item>
+        <item name="colorAccent">#FFEB3B</item>
+    </style>
+
+    <style name="LoginDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">#00BCD4</item>
+        <item name="colorControlHighlight">#00BCD4</item>
+        <item name="colorAccent">#FFEB3B</item>
+
+    </style>
+
+    <style name="JokesDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorAccent">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="ProfileTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/profile_primary</item>
+        <item name="colorPrimaryDark">@color/profile_primaryDark</item>
+        <item name="colorAccent">#FF4081</item>
+    </style>
+
+    <style name="ProfileThemeLight" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/profile_primary</item>
+        <item name="colorPrimaryDark">@color/profile_primaryDark</item>
+        <item name="colorAccent">#FF4081</item>
+    </style>
+
+    <style name="PlaceholderTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorPrimaryDark">#0097A7</item>
+        <item name="colorAccent">#FFEB3B</item>
+    </style>
+
+    <style name="ReportTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorPrimaryDark">#0097A7</item>
+        <item name="colorAccent">#FFEB3B</item>
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">@color/colorPrimaryLight</item>
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="DetailTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#00BCD4</item>
+        <item name="colorPrimaryDark">#0097A7</item>
+        <item name="colorAccent">#FFEB3B</item>
+    </style>
+
+    <style name="PlaceholderTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PlaceholderTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="PlaceholderTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="PlaceholderTheme.Main" parent="PlaceholderTheme.NoActionBar"></style>
+
+    <style name="PlaceholderTheme.Dialog" parent="PlaceholderTheme.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/dialog_background_scrim</item>
+        <!--<item name="android:windowAnimationStyle">@null</item>-->
+        <!--<item name="android:windowContentTransitions">true</item>-->
+    </style>
+
+</resources>

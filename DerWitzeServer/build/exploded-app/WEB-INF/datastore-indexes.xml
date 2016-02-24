@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes autoGenerate="true">
+    <datastore-index kind="posting" ancestor="true" source="manual">
+        <property name="datum" direction="desc"/>
+        <property name="votes" direction="desc"/>
+    </datastore-index>
+    <datastore-index kind="userPosting" ancestor="true" source="manual">
+        <property name="datum" direction="desc"/>
+    </datastore-index>
+</datastore-indexes>

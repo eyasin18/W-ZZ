@@ -1,0 +1,42 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffffff">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/appbar">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:theme="@style/Theme.AppCompat"
+                android:id="@+id/jokesFragmentToolbar"
+                app:layout_scrollFlags="scroll|enterAlways"/>
+
+            <android.support.design.widget.TabLayout
+                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:theme="@style/PlaceholderTheme"
+                android:id="@+id/jokesFragmentTabs"
+                app:layout_collapseMode="pin"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/jokesViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

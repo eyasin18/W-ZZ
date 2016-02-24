@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_katego"
+            android:checked="true"
+            android:icon="@drawable/ic_format_list_bulleted_grey600_18dp"
+            android:title="@string/nav_katego" />
+        <item
+            android:id="@+id/nav_favo"
+            android:checked="false"
+            android:icon="@drawable/ic_heart_grey600_18dp"
+            android:title="@string/nav_favo" />
+        <item
+            android:id="@+id/nav_abo"
+            android:checked="false"
+            android:icon="@drawable/ic_account_box_grey600_18dp"
+            android:title="@string/nav_abo" />
+        <item
+            android:id="@+id/nav_acc"
+            android:checked="false"
+            android:icon="@drawable/ic_account_circle_grey600_18dp"
+            android:title="@string/my_jokes" />
+    </group>
+</menu>

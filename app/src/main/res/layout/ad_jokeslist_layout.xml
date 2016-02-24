@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ad_jokeslist_relativelayout">
+
+    <ImageView
+        android:id="@+id/ad_jokeslist_icon"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:paddingTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:id="@+id/ad_my_jokeslist_placeholder"
+        android:textColor="#212121"
+        android:paddingLeft="72dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="36dp"
+        android:background="?android:attr/selectableItemBackground"/>
+    
+    <TextView
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/ad_jokeslist_title"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/ad_jokeslist_image" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="224dp"
+        android:id="@+id/ad_jokeslist_image"
+        android:src="@drawable/pb_cover_dark"
+        android:scaleType="centerCrop"
+        android:layout_below="@id/ad_jokeslist_title"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="72dp"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/ad_jokeslist_text"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_below="@+id/ad_jokeslist_image"
+        android:layout_alignStart="@+id/ad_jokeslist_image" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#B6B6B6"
+        android:layout_below="@id/ad_jokeslist_text"
+        android:id="@+id/view"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

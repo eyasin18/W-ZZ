@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    app:theme="@style/ProfileTheme">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:id="@+id/profile_name_edit"
+            android:layout_alignParentTop="true"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_status_edit"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/profile_name_edit"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apply"
+            android:id="@+id/profile_apply_button"
+            android:layout_below="@+id/profile_status_edit"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+</ScrollView>

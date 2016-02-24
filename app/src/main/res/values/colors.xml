@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright 2014, The Android Open Source Project
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<resources>
+    <color name="fab_color_1">#FFEB3B</color>
+    <color name="fab_color_1_muted">#FFD600</color>
+    <color name="fab_color_2">#2196F3</color>
+    <color name="fab_color_2_muted">#1976D2</color>
+    <color name="tabsScrollColor">#FFEB3B</color>
+    <color name="mtc">#000000</color>
+    <color name="list_item_title">#000</color>
+    <color name="list_background">#fff</color>
+    <color name="list_background_pressed">#EEEEEE</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="multiColor">#FFFFFF</color>
+    <color name="colorPrimary">#00BCD4</color>
+    <color name="colorPrimaryLight">#4DD0E1</color>
+    <color name="signInGoogle">#F44336</color>
+    <color name="signInTwitter">#55acee</color>
+    <color name="signInFacebook">#3b5998</color>
+    <color name="white">#ffffff</color>
+    <color name="home_statusBarColor">#0097A7</color>
+    <color name="colorPrimaryDark">#0097A7</color>
+    <color name="heart_red">#F44336</color>
+    <color name="icon_grey">#757575</color>
+
+    <color name="refresh_yellow">#FFEB3B</color>
+    <color name="refresh_green">#4CAF50</color>
+    <color name="refresh_red">#F44336</color>
+    <color name="refresh_blue">#2196F3</color>
+    <color name="report_red">#F44336</color>
+    <color name="like_blue">#00BCD4</color>
+
+    <color name="dialog_background_color">#fafafa</color>
+    <color name="dialog_background_scrim">#99323232</color>
+
+    <color name="profile_primary">#3F51B5</color>
+    <color name="profile_primaryDark">#303F9F</color>
+</resources>

@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_id": "derwitzeserver",
+    "project_number": "162261652993",
+    "name": "Kaktus"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162261652993:android:4bbd56cf5684b478",
+        "client_id": "android:de.repictures.wzz",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "de.repictures.wzz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162261652993-6of5t5qdk1vcrr9kv1uil17pd6n6eg5d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.repictures.wzz",
+            "certificate_hash": "A1F5793EAE441D42E96820E69D87B21BBCC93552"
+          }
+        },
+        {
+          "client_id": "162261652993-tjphj4s6p5uuup4ujncj3sf6jk87c3fo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.repictures.wzz",
+            "certificate_hash": "C518896FA7947EE683856BB21392F4738E8748F2"
+          }
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">W!ZZ</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="btn_logout_from_google">Abmelden</string>
+    <string name="btn_revoke_access">Zugang verweigern</string>
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="dialog_login_title">Anmelden mit…</string>
+    <string name="drawer_close">Navigation Drawer geschlossen</string>
+    <string name="drawer_open">Navigation Drawer geöffnet</string>
+    <string name="element_text">Element</string>
+    <string name="hello_blank_fragment">Hallo lehres Fragment</string>
+    <string name="hello_world">Hallo Welt!</string>
+    <string name="katego">W!ZZ</string>
+    <string name="login">Anmelden</string>
+    <string name="nav_abo">Meine Abos</string>
+    <string name="nav_acc">Mein Account</string>
+    <string name="nav_favo">Favoriten</string>
+    <string name="nav_katego">Kategorien</string>
+    <string name="nav_profile">Profil</string>
+    <string name="plus_disconnect">Google+ abmelden</string>
+    <string name="plus_sign_out">Google+ Account wechseln</string>
+    <string name="title_activity_acc">Profil</string>
+    <string name="title_activity_com_katego">ComKatego</string>
+    <string name="title_activity_login">Anmelden</string>
+    <string name="title_activity_start">Lustige Witze</string>
+
+    <array name="classes">
+        <item>Kurze Witze</item>
+        <item>Einzeiler</item>
+        <item>Lange Witze</item>
+        <item>Tiefsinnige Fragen</item>
+        <item>Chuck Norris</item>
+        <item>Poesie</item>
+        <item>Kontersprüche</item>
+        <item>Lustige Beleidigungen</item>
+        <item>Unnützes Wissen</item>
+        <item>Versaute Witze</item>
+        <item>Geschichten</item>
+        <item>Rätsel</item>
+        <item>Dieser Moment</item>
+        <item>Chat</item>
+    </array>
+
+
+    <array name="urls">
+        <item>Kurze+Witze</item>
+        <item>Einzeiler</item>
+        <item>Lange+Witze</item>
+        <item>Tiefsinnige+Fragen</item>
+        <item>Chuck+Norris</item>
+        <item>Poesie</item>
+        <item>Kontersprüche</item>
+        <item>Beleidigungen</item>
+        <item>Unnützes+Wissen</item>
+        <item>Versaute+Witze</item>
+        <item>Geschichten</item>
+        <item>Rätsel</item>
+        <item>Dieser+Moment</item>
+        <item>Chat</item>
+    </array>
+
+    <string name="title_activity_main_jokes">Witze</string>
+    <string name="title_shortJokes">Kurze Witze</string>
+    <string name="title_oneliner">Einzeiler</string>
+    <string name="writeWizzle">Dein W!zzle</string>
+    <string name="action_search">Suche</string>
+    <string name="login_done">Fertig!</string>
+    <string name="log_out_description">Logout</string>
+    <string name="prof_table_abo">Abonnenten</string>
+    <string name="prof_table_abos">Abos</string>
+    <string name="prof_table_wizzles">w!zzles</string>
+    <string name="add_joke">Hinzufügen</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="editWizzle">Wizzle hinzufügen</string>
+    <array name="tabTitles">
+        <item>Heute</item>
+        <item>Neu</item>
+        <item>Verrücktheit</item>
+    </array>
+    <string name="menu_refresh">Aktualisieren</string>
+    <string name="already_voted">Abgestimmt</string>
+    <string name="error">Fehler!</string>
+    <string name="error_devise">Fehler beim laden des Status</string>
+    <string name="error_joke">Fehler beim laden des Witzes</string>
+    <string name="report">Melden</string>
+    <string name="share">Teilen</string>
+    <string name="thumb_up">Voten</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="favor">Favorisieren</string>
+    <string name="menu_darkMode">Nachtmodus</string>
+    <string name="menu_lightMode">Tagmodus</string>
+    <string name="post_success">Witz gepostet</string>
+    <string name="save_joke">Witz speichern</string>
+    <string name="save_to_clipboard">In Zwischenablage kopiert</string>
+    <string name="add_comment">Kommentar hinzufügen</string>
+    <string name="devise">Describe yourself in one word!</string>
+    <string name="finish">Fertig</string>
+    <string name="login_welcome">Melde dich an, damit wir dir ein Profil erstellen können!</string>
+    <string name="one_thing">Nur noch eine Sache:</string>
+    <string name="devise_1">Was ist dein Lieblingswort?</string>
+    <string name="devise_2">Was ist dein Lieblingsgegenstand?</string>
+    <string name="devise_3">Beschreibe dich in einem Wort</string>
+    <string name="finish1">Das wars schon!</string>
+    <string name="havefun">Viel Spaß!</string>
+    <string name="login_with">Anmelden mit</string>
+    <string name="title_activity_example">LoginTest</string>
+    <string name="info_error">Fehler beim laden der Profilinformationen</string>
+    <string name="login_error">Fehler beim anmelden</string>
+    <string name="my_jokes">Mein Profil</string>
+    <string name="send">Senden</string>
+    <string name="undo">Rückgängig</string>
+    <string name="abo_alpha">Abos werden ab der Beta verfügbar sein…</string>
+    <string name="joke_of">Witz von</string>
+    <string name="share_via">Teilen mit…</string>
+    <string name="title_activity_report">Melden</string>
+    <array name="report_spinner_reasons">
+        <item>Beleidigend</item>
+        <item>Sexueller Inhalt</item>
+        <item>Gewalttätiger Inhalt</item>
+        <item>Spam</item>
+        <item>Missbrauch</item>
+        <item>Anderer Grund…</item>
+    </array>
+    <string name="enter_reason">Grund</string>
+    <string name="report_misuse">Missbrauch</string>
+    <string name="report_offensive">Beleidigend</string>
+    <string name="report_other">Anderer Grund…</string>
+    <string name="report_sexual">Sexueller Inhalt</string>
+    <string name="report_spam">Spam</string>
+    <string name="report_violent">Gewalttätiger Inhalt</string>
+    <string name="reported">Gemeldet</string>
+    <string name="action_sign_in_short">Anmelden</string>
+    <string name="error_field_required">Dieses Feld wird benötigt</string>
+    <string name="error_incorrect_password">Das Passwort ist falsch</string>
+    <string name="error_invalid_email">Diese email ist ungültig</string>
+    <string name="error_invalid_password">Das Passwort ist zu kurz</string>
+    <string name="permission_rationale">"Der Zugriff auf die Kontakte wird benötigt, um Ihnen beim anmelden zu helfen."</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Passwort</string>
+    <string name="scontinue">Weiter</string>
+    <string name="title_activity_new_login">Anmelden</string>
+    <string name="try_again">Nochmal versuchen</string>
+    <string name="action_register">Registrieren</string>
+    <string name="prompt_about_me">Über mich</string>
+    <string name="prompt_password_repeat">Passwort (Wiederholen)</string>
+    <string name="prompt_username">Nutzername</string>
+    <string name="error_password_6_letters">Passwort muss mindestens 6 Zeichen lang sein</string>
+    <string name="error_password_not_matching">Die Passworter stimmen nicht überein</string>
+    <string name="error_username_6_letters">Nutzername muss mindestens 6 Zeichen lang sein</string>
+    <string name="import_image">Profilbild importieren aus…</string>
+    <string name="login_with_email">Mit Email anmelden</string>
+    <string name="add_wizzle">Wizzle hinzufügen</string>
+    <string name="title_activity_profile"> </string>
+    <string name="favored">Favorisiert</string>
+    <string name="defavored">Von Favoriten entfernt</string>
+    <string name="about">Info</string>
+    <string name="following">Folgt</string>
+    <string name="jokes">Witze</string>
+    <string name="profile">Profil</string>
+    <string name="apply">Übernehmen</string>
+    <string name="no_comments">Keine Kommentare</string>
+    <string name="no_more_jokes">Sei gegrüßt!</string>
+    <string name="subscribed">Abonniert</string>
+    <string name="unsubscribed">Deabonniert</string>
+</resources>

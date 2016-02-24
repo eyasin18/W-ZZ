@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/mainJokesLayout"
+        android:background="#ffffff">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/appbar">
+
+            <android.support.v7.widget.Toolbar
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:theme="@style/Theme.AppCompat"
+                android:id="@+id/jokesFragmentToolbar"
+                app:layout_scrollFlags="scroll|enterAlways"/>
+
+            <android.support.design.widget.TabLayout
+                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:theme="@style/PlaceholderTheme"
+                android:id="@+id/jokesFragmentTabs"
+                app:layout_collapseMode="pin"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/jokesViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:visibility="invisible"/>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginTop="104dp"
+            android:id="@+id/load_jokes"
+            android:layout_centerHorizontal="true"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_2"
+            android:layout_width="@dimen/fab_size"
+            android:layout_height="@dimen/fab_size"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_pencil_white_18dp"
+            android:layout_gravity="bottom|end"
+            app:backgroundTint="@color/colorPrimaryLight"
+            app:rippleColor="@color/colorPrimary"
+            app:elevation="6dp"
+            android:transitionName="@string/transition_dialog"
+            app:pressedTranslationZ="12dp"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <View
+        android:id="@+id/dataView"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+    <View
+        android:id="@+id/dataView2"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginRight="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:paddingRight="34dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="8dp"
+        android:inputType="textMultiLine"
+        android:id="@+id/editWizzle"
+        android:layout_alignParentBottom="true"
+        android:background="#4DD0E1"
+        android:visibility="invisible"
+        android:elevation="8dp"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <ImageButton
+        android:background="?android:attr/selectableItemBackground"
+        android:id="@+id/sendbutton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_send_white_24dp"
+        android:elevation="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="36dp"
+        android:visibility="invisible"
+        android:layout_gravity="right|bottom"/>
+
+</RelativeLayout>

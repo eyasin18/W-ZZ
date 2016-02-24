@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="-23dp">
+
+    <TextView
+        android:paddingTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Fehler beim Laden des Witzes"
+        android:id="@+id/ad_jokeslist_placeholder"
+        android:textColor="#212121"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="36dp"
+        android:background="?android:attr/selectableItemBackground"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="#B6B6B6"
+        android:layout_below="@id/ad_jokeslist_placeholder"
+        android:id="@+id/view"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/jokeslist_voteCounter"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignBottom="@+id/view"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/jokeslist_voteCounterAnimator"
+        android:layout_marginRight="32dp"
+        android:alpha="0"
+        android:layout_below="@+id/ad_jokeslist_placeholder"
+        android:layout_alignStart="@+id/jokeslist_voteCounter" />
+
+    <ImageView
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:id="@+id/jokeslist_thumb_up"
+        android:padding="8dp"
+        android:src="@drawable/ic_thumb_up_grey600_18dp"
+        android:layout_toLeftOf="@+id/jokeslist_voteCounter"
+        android:layout_alignBottom="@+id/view"/>
+
+    <ImageView
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:id="@+id/jokeslist_favor"
+        android:padding="8dp"
+        android:src="@drawable/ic_heart_grey600_18dp"
+        android:layout_toLeftOf="@+id/jokeslist_thumb_up"
+        android:layout_alignBottom="@+id/view"/>
+
+</RelativeLayout>

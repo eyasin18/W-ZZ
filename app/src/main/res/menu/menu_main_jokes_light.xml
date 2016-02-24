@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="de.repictures.wzz.MainJokes">
+
+    <!--<item android:id="@+id/action_refresh"
+        android:title="@string/menu_refresh"
+        android:orderInCategory="3"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_refresh_white_24dp"/>
+
+    <item android:id="@+id/action_darkMode"
+        android:title="@string/menu_darkMode"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_brightness_3_white_24dp" />-->
+
+</menu>

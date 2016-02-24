@@ -1,0 +1,40 @@
+Applications Memory Usage (kB):
+Uptime: 14628578 Realtime: 14628569
+
+** MEMINFO in pid 14563 [de.repictures.wzz] **
+                   Pss  Private  Private  Swapped     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap     6768     6728        0        0    16384     9006     7377
+  Dalvik Heap    13037    12624        0        0    36720    28581     8139
+ Dalvik Other      472      472        0        0                           
+        Stack      276      276        0        0                           
+      Gfx dev     3704     3704        0        0                           
+    Other dev        4        0        4        0                           
+     .so mmap      837      304      124        0                           
+    .apk mmap      494        0      172        0                           
+    .ttf mmap       35        0       20        0                           
+    .dex mmap     7276        0     7272        0                           
+    .oat mmap     1428        0      508        0                           
+    .art mmap     1113      900        4        0                           
+   Other mmap       28        4        0        0                           
+   EGL mtrack    39808    39808        0        0                           
+    GL mtrack     7424     7424        0        0                           
+      Unknown      148      148        0        0                           
+        TOTAL    82852    72392     8104        0    53104    37587    15516
+ 
+ Objects
+               Views:      188         ViewRootImpl:        2
+         AppContexts:        4           Activities:        2
+              Assets:        3        AssetManagers:        3
+       Local Binders:       16        Proxy Binders:       19
+       Parcel memory:        7         Parcel count:       28
+    Death Recipients:        0      OpenSSL Sockets:        2
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/data/app/de.repictures.wzz-2/base.apk:/assets/fonts/google_material_design.ttf: 140K

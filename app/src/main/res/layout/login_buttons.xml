@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_new_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/buttonsLayout"
+    android:padding="16dp"
+    android:layout_centerVertical="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentBottom="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:text="@string/action_sign_in_short"
+            android:layout_gravity="center_horizontal" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gooogle"/>
+
+        <com.twitter.sdk.android.core.identity.TwitterLoginButton
+            android:id="@+id/twitter_button"
+            android:layout_width="match_parent"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="4dp"/>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebook_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:layout_marginTop="6dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_with_email_button"
+            android:text="@string/login_with_email"
+            style="?android:textAppearanceSmall"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:theme="@style/Theme.AppCompat.Light" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

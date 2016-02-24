@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="forbidden_characters">
+        <item>~</item>
+        <item>&lt;/we&gt;</item>
+        <item>&lt;/~&gt;</item>
+        <item>&lt;br /&gt;</item>
+    </array>
+
+    <array name="replacing_characters">
+        <item>-</item>
+        <item>/we</item>
+        <item>/~</item>
+        <item>br</item>
+    </array>
+
+
+</resources>

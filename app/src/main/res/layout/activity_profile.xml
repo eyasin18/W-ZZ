@@ -1,0 +1,123 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    app:theme="@style/ProfileTheme"
+    tools:context=".ProfileActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="408dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="288dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true">
+
+            <ImageView
+                android:id="@+id/profileCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/profilePb"
+                android:paddingTop="64dp"
+                android:paddingBottom="64dp"
+                app:layout_collapseMode="parallax"
+                android:transitionName="detail_profile"/>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <View
+            android:id="@+id/statusbar_background"
+            android:layout_width="match_parent"
+            android:layout_height="408dp"
+            android:background="@color/profile_primary"/>
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/profileTitleToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="-408dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:id="@+id/back"
+                android:src="@drawable/ic_arrow_left_white_24dp"/>
+
+            <de.repictures.wzz.uiHelper.AutoResizeTextView
+                android:id="@+id/profileTitleText"
+                android:paddingLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="192dp"
+                android:maxLines="1"
+                android:text="@string/error"
+                style="@style/Base.TextAppearance.AppCompat.Headline" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/share"
+                android:padding="16dp"
+                android:src="@drawable/ic_share_variant_white_24dp"
+                android:layout_gravity="end"
+                android:alpha="0"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/report"
+                android:src="@drawable/ic_flag_variant_white_24dp"
+                android:layout_gravity="end"
+                android:padding="16dp"
+                android:alpha="0"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            app:theme="@style/ProfileThemeLight"
+            android:id="@+id/profileTabs"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/abbo_fab"
+        app:layout_anchor="@id/profileTitleToolbar"
+        app:layout_anchorGravity="top|right|end"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:elevation="8dp"
+        android:src="@drawable/ic_heart_outline_white_18dp"/>
+
+    <include layout="@layout/content_profile"/>
+
+    <android.support.v4.view.ViewPager
+        android:visibility="gone"
+        android:id="@+id/profileViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+</android.support.design.widget.CoordinatorLayout>
