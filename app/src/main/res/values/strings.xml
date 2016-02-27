@@ -222,7 +222,7 @@
     <string name="error_password_not_matching">Passwords are not matching</string>
     <string name="import_image">Import profile picture with...</string>
     <string name="login_with_email">Log in with email</string>
-    <string name="title_activity_profile" translatable="false"> </string>
+    <string name="title_activity_profile" translatable="false">Profil</string>
 
     <string name="title_activity_main" translatable="false">Fab Dialog Morph Animation</string>
     <string name="transition_dialog" translatable="false">transition_dialog</string>
@@ -341,5 +341,6 @@
     <string name="bsp_joke_4">joke 4</string>
     <string name="bsp_joke_5">joke 5</string>
     <string name="uploading_data">Saving data</string>
+    <string name="no_jokes">No jokes available</string>
 
 </resources>

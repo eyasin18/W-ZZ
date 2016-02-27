@@ -173,4 +173,7 @@
     <string name="bsp_joke_3">\"Meine Frau hat heute eine Zitterspinne in unserer Badewann entdeckt.\", teilte ich meinem Kumpel Pablo mit. \"Was ist denn das?\", fragte er.\n\n\"Ach, das ist so eine große weiße Schüssel, in der wir uns waschen.\"</string>
     <string name="bsp_joke_4">Dieser Moment wenn du auf der Arbeit Witze liest und fast die Landebahn verfehlst.</string>
     <string name="bsp_joke_5">Wenn du dich dumm fühlst, denk einfach daran: Manchmal greifen Faultiere ihre Arme, weil die wie Äste aussehen an denen sie sich festhalen können. Danach fallen sie vom Baum und sterben.</string>
+    <string name="no_jokes">Keine Witze verfügbar</string>
+    <string name="uploading_data">Profil wird gespeichert</string>
+    <string name="welcome">W!ZZ</string>
 </resources>

@@ -8,6 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.mopub.nativeads.MoPubRecyclerAdapter;
+import com.mopub.nativeads.MoPubStaticNativeAdRenderer;
+import com.mopub.nativeads.RequestParameters;
+import com.mopub.nativeads.ViewBinder;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -28,6 +34,8 @@ public class Beliebteste extends Fragment {
     public static boolean loading = true;
     public static boolean removed = false;
     int pastVisiblesItems, visibleItemCount;
+    MoPubRecyclerAdapter myMoPubAdapter;
+    RequestParameters mRequestParameters;
 
     @Override
     public void onAttach(Context context) {
@@ -39,16 +47,35 @@ public class Beliebteste extends Fragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.view_pager_element, container, false);
         mBeliebtesteJokes = new LinkedList<>(Arrays.asList(getArguments().getString("jokes").split("</we>")));
-        initRecyclerview(rootView);
+        TextView noJokes = (TextView) rootView.findViewById(R.id.jokes_no_jokes);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.jokes_recycler_view);
+        if (mBeliebtesteJokes.size() < 2){
+            mRecyclerView.setVisibility(View.GONE);
+            noJokes.setVisibility(View.VISIBLE);
+        } else {
+            mRecyclerView.setVisibility(View.VISIBLE);
+            noJokes.setVisibility(View.GONE);
+            initRecyclerview();
+        }
         postId = MainJokes.katego;
         return rootView;
     }
 
-    private void initRecyclerview(View rootView) {
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.jokes_recycler_view);
+    private void initRecyclerview() {
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new JokesAdapter(mBeliebtesteJokes, false, MainJokes.coordinatorLayoutView, getActivity());
-        mRecyclerView.setAdapter(mAdapter);
+        ViewBinder myViewBinder = new ViewBinder.Builder(R.layout.ad_jokeslist_layout)
+                .titleId(R.id.ad_jokeslist_title)
+                .textId(R.id.ad_jokeslist_text)
+                .mainImageId(R.id.ad_jokeslist_image)
+                .iconImageId(R.id.ad_jokeslist_icon)
+                .build();
+
+        MoPubStaticNativeAdRenderer myRenderer = new MoPubStaticNativeAdRenderer(myViewBinder);
+        myMoPubAdapter = new MoPubRecyclerAdapter(getContext(), mAdapter);
+
+        myMoPubAdapter.registerAdRenderer(myRenderer);
+        mRecyclerView.setAdapter(myMoPubAdapter);
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -63,12 +90,34 @@ public class Beliebteste extends Fragment {
                 totalItemCount = mLayoutManager.getItemCount();
                 pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
                 if (loading) {
-                    if ( (visibleItemCount + pastVisiblesItems) >= totalItemCount) {
-                        new loadMoreJokes(mRecyclerView, sort, totalItemCount, mAdapter, postId, getActivity());
+                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                         loading = false;
+                        new loadMoreJokes(mRecyclerView, sort, totalItemCount, myMoPubAdapter, postId, getActivity());
                     }
                 }
             }
         });
+    }
+
+    @Override
+    public void onResume(){
+        if (mBeliebtesteJokes.size() >= 2) {
+            // Set up your request parameters
+            mRequestParameters = new RequestParameters.Builder()
+                    .location(null)
+                    .build();
+
+            // Request ads when the user returns to this activity.
+            myMoPubAdapter.loadAds(MainJokes.AD_UNIT_ID);
+        }
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mBeliebtesteJokes.size() >= 2) {
+            myMoPubAdapter.destroy();
+        }
+        super.onDestroy();
     }
 }

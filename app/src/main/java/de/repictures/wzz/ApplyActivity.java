@@ -4,6 +4,7 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Slide;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Window;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import de.repictures.wzz.AsyncTasks.PassData;
 
 public class ApplyActivity extends AppCompatActivity {
 
+    private static final String TAG = "StartActivity";
     @Bind(R.id.apply_progressBar) ProgressBar progressbar;
     @Bind(R.id.apply_check) ImageView check;
 
@@ -45,10 +47,10 @@ public class ApplyActivity extends AppCompatActivity {
                         crazyValue = crazyValue - 8;
                         break;
                     case 3:
-                        crazyValue = crazyValue - 15;
+                        crazyValue = crazyValue + 15;
                         break;
                     case 4:
-                        crazyValue = crazyValue - 23;
+                        crazyValue = crazyValue + 23;
                         break;
                 }
             } else if (likes[i] == 1){
@@ -63,13 +65,14 @@ public class ApplyActivity extends AppCompatActivity {
                         crazyValue = crazyValue + 8;
                         break;
                     case 3:
-                        crazyValue = crazyValue + 15;
+                        crazyValue = crazyValue - 15;
                         break;
                     case 4:
-                        crazyValue = crazyValue + 23;
+                        crazyValue = crazyValue - 23;
                         break;
                 }
             }
+            Log.d(TAG, "onCreate: " + crazyValue);
         }
         String[] data = getIntent().getStringArrayExtra("data");
         PassData mAuthTask = new PassData(data[0], data[1],

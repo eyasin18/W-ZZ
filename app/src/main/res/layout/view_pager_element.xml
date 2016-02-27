@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_jokes"
+        android:padding="24dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/jokes_no_jokes"
+        android:theme="@style/Theme.AppCompat.Light"
+        android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/jokes_recycler_view"
@@ -10,4 +21,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -26,6 +27,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +36,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -52,6 +55,7 @@ import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import com.google.android.gms.plus.model.people.PersonBuffer;
+import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -73,6 +77,7 @@ import java.util.List;
 
 import de.repictures.wzz.account.Facebook;
 import de.repictures.wzz.account.GooglePlus;
+import de.repictures.wzz.uiHelper.BlurTransform;
 import io.fabric.sdk.android.Fabric;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -111,6 +116,7 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
     private String sPassword;
     private String sKey;
     private boolean mSignInClicked;
+    private ImageView background;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +127,13 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
         }
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig), new Crashlytics());
+        background = (ImageView) findViewById(R.id.login_background);
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        long verhältnis = size.y/size.x;
+        int height = Math.round(480*verhältnis);
+        Picasso.with(NewLoginActivity.this).load(R.drawable.background).resize(size.x/4, size.y/4).centerCrop().transform(new BlurTransform(this, 8)).into(background);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
 

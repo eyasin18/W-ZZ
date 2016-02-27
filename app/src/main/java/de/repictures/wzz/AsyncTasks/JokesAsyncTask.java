@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -97,7 +98,7 @@ public class JokesAsyncTask extends AsyncTask<String, Void, String>{
         progressBar.setVisibility(View.GONE);
     }
 
-    private class JokesPagerAdapter extends FragmentPagerAdapter {
+    private class JokesPagerAdapter extends FragmentStatePagerAdapter {
         String[] tabTitles;
         private final String[] split;
 

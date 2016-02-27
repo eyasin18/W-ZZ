@@ -99,8 +99,8 @@ public class loadMoreJokes {
         jokesList = new LinkedList<>(Arrays.asList(jokes.split("</we>")));
         int startPosition = jokesList.size();
         if ((startPosition) < 15 && !removed){
-            addList.remove(addList.size() - 1);
-            mAdapter.notifyItemRemoved(addList.size());
+            addList.remove(addList.size() -1);
+            mAdapter.notifyItemRemoved(addList.size() + 1); //nix
             for (int i = totalItemCount; i < totalItemCount + startPosition; i++){
                 addItem(i);
             }
@@ -108,10 +108,10 @@ public class loadMoreJokes {
             else if (sort) Beliebteste.removed = true;
             else Heute.removed = true;
             addList.remove(addList.size() - 1);
-            mAdapter.notifyItemRemoved(addList.size()-1);
+            mAdapter.notifyItemRemoved(addList.size()); //-1
         } else if(!removed) {
-            addList.remove(addList.size()-1);
-            mAdapter.notifyItemRemoved(addList.size());
+            addList.remove(addList.size() -1);
+            mAdapter.notifyItemRemoved(addList.size() + 1); //nix
             for (int i = totalItemCount; i < totalItemCount + startPosition; i++){
                 addItem(i);
             }

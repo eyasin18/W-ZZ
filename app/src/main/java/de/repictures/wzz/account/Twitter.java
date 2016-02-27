@@ -12,6 +12,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.models.User;
 
+import de.repictures.wzz.AsyncTasks.CheckData;
 import de.repictures.wzz.AsyncTasks.PassData;
 import de.repictures.wzz.R;
 import de.repictures.wzz.StartActivity;
@@ -40,11 +41,8 @@ public class Twitter {
                                 "1", profilePic, result.data.profileBannerUrl, "true", null};
                         Intent i = new Intent(activity, StartActivity.class);
                         i.putExtra("data", data);
-                        activity.startActivity(i);
-                        /*PassData mAuthTask = new PassData(result.data.idStr, result.data.name,
-                                1, profilePic, result.data.profileBannerUrl,
-                                activity, true, null);
-                        mAuthTask.execute((Void) null);*/
+                        CheckData mAuthTask = new CheckData(activity, i, "1");
+                        mAuthTask.execute(result.data.idStr);
                     }
 
                     @Override

@@ -71,6 +71,7 @@ public class MainJokes extends AppCompatActivity implements View.OnClickListener
     private ProgressBar progressBar;
 
     public static final String HIGHSCORE_SERVER_BASE_URL = "http://derwitzeserver.appspot.com/derwitzeserver";
+    public static final String AD_UNIT_ID = "231594b48c604751bf6a8247af1d2a75";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

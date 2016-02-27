@@ -30,33 +30,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="@string/error"
         android:id="@+id/ad_jokeslist_title"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/ad_jokeslist_image" />
+        android:layout_alignLeft="@+id/ad_jokeslist_image" />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="224dp"
+        android:layout_height="150dp"
         android:id="@+id/ad_jokeslist_image"
-        android:src="@drawable/pb_cover_dark"
         android:scaleType="centerCrop"
         android:layout_below="@id/ad_jokeslist_title"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="72dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:textSize="16sp"
+        android:textColor="#212121"
+        android:text="@string/error"
         android:id="@+id/ad_jokeslist_text"
         android:paddingRight="16dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:layout_below="@+id/ad_jokeslist_image"
-        android:layout_alignStart="@+id/ad_jokeslist_image" />
+        android:layout_alignLeft="@+id/ad_jokeslist_image" />
 
     <View
         android:layout_width="wrap_content"

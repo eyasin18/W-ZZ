@@ -2,11 +2,15 @@ package de.repictures.diewitzeapp.dws;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Query;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -159,7 +163,18 @@ public class dwspost extends HttpServlet {
                 } catch (EntityNotFoundException e) {
                     e.printStackTrace();
                 }
+                break;
+            case 17:
+                Key personKey = KeyFactory.createKey("email", email);
+                Query query = new Query("profile", personKey);
+                List<Entity> profiles = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
+                if (profiles.size() > 0){
+                    Entity e = profiles.get(0);
+                    resp.getWriter().println(e.getProperty("key"));
+                } else {
+                    resp.getWriter().println("false");
+                }
+                break;
         }
-        req.setCharacterEncoding("iso-8859-1");
     }
 }

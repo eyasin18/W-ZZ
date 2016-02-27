@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
         setContentView(R.layout.activity_splash);
         // TODO: 21.08.2015 Wenn Beta: Isuetracker anschalten!!
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig), new Crashlytics(), new MoPub());
+        Fabric.with(this, new Twitter(authConfig), new Crashlytics());
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         if (!getSignedIn()){

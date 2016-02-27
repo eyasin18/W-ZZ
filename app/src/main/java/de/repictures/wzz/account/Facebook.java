@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import de.repictures.wzz.AsyncTasks.CheckData;
 import de.repictures.wzz.AsyncTasks.PassData;
 import de.repictures.wzz.StartActivity;
 
@@ -58,11 +59,8 @@ public class Facebook {
                                                 "2", personPhotoUrl, coverUrl, "true", null};
                                         Intent i = new Intent(activity, StartActivity.class);
                                         i.putExtra("data", data);
-                                        activity.startActivity(i);
-                                        /*PassData mAuthTask = new PassData(email, personName,
-                                                2, personPhotoUrl, coverUrl,
-                                                activity, true, null);
-                                        mAuthTask.execute((Void) null);*/
+                                        CheckData mAuthTask = new CheckData(activity, i, "2");
+                                        mAuthTask.execute(email);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
