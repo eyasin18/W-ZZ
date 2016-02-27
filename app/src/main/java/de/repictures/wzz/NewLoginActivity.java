@@ -195,13 +195,6 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
         mProgressView = findViewById(R.id.login_progress);
         mInputLayout = (TextInputLayout) findViewById(R.id.inputlayout);
         mEmailInput = (TextInputLayout) findViewById(R.id.emailinput);
-        mViewSwitcher = (ViewFlipper) findViewById(R.id.viewSwitcher);
-        /*KenBurnsView img1 = (KenBurnsView) findViewById(R.id.img1);
-        img1.setTransitionListener(this);
-        KenBurnsView img2 = (KenBurnsView) findViewById(R.id.img2);
-        img2.setTransitionListener(this);
-        KenBurnsView img3 = (KenBurnsView) findViewById(R.id.img3);
-        img3.setTransitionListener(this);*/
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)

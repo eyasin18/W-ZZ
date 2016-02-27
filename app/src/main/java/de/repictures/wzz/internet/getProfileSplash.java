@@ -15,11 +15,7 @@ import java.net.URLDecoder;
 
 import de.repictures.wzz.DetailActivity;
 import de.repictures.wzz.MainJokes;
-import de.repictures.wzz.SplashActivity;
 
-/**
- * Created by yasin on 22.02.16.
- */
 public class getProfileSplash implements Runnable {
     private final String key;
     private String userKey;

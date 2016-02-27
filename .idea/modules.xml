@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/DerWitzeServer/DerWitzeServer.iml" filepath="$PROJECT_DIR$/DerWitzeServer/DerWitzeServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/W!ZZ.iml" filepath="$PROJECT_DIR$/W!ZZ.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gcm/gcm.iml" filepath="$PROJECT_DIR$/gcm/gcm.iml" />
     </modules>
   </component>
 </project>

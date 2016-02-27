@@ -19,7 +19,6 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 import de.repictures.wzz.AsyncTasks.CheckData;
-import de.repictures.wzz.AsyncTasks.PassData;
 import de.repictures.wzz.StartActivity;
 
 public class Facebook {

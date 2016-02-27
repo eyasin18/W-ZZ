@@ -29,6 +29,10 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.plus.Plus;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,6 +47,7 @@ import de.repictures.wzz.fragments.profile.MyProfileAboutFragment;
 import de.repictures.wzz.fragments.profile.MyProfileFollowingFragment;
 import de.repictures.wzz.fragments.profile.MyProfileJokesFragment;
 import de.repictures.wzz.uiHelper.AppBarStateChangeListener;
+import de.repictures.wzz.uiHelper.LogAllOut;
 import de.repictures.wzz.uiHelper.getPictures;
 
 public class MyJokesFragment extends Fragment implements View.OnClickListener {
@@ -56,6 +61,7 @@ public class MyJokesFragment extends Fragment implements View.OnClickListener {
     AppBarLayout appBar;
     NestedScrollView scrollView;
     TextView username;
+    GoogleApiClient mGoogleApiClient;
 
     public MyJokesFragment() {
         // Required empty public constructor
@@ -76,6 +82,11 @@ public class MyJokesFragment extends Fragment implements View.OnClickListener {
         final TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.accTabs);
         share = (ImageView) rootView.findViewById(R.id.my_jokes_share);
         settings = (ImageView) rootView.findViewById(R.id.my_jokes_settings);
+        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+                .addApi(Plus.API)
+                .addScope(Plus.SCOPE_PLUS_LOGIN)
+                .addScope(Plus.SCOPE_PLUS_PROFILE)
+                .build();
 
         final int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
         appBar.addOnOffsetChangedListener(new AppBarStateChangeListener(MainKatego.toolbar, getActivity()) {
@@ -121,8 +132,7 @@ public class MyJokesFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(getActivity(), ProfileActivity.class);
-        startActivity(i);
+        new LogAllOut(getActivity(), mGoogleApiClient);
     }
 
     @Override

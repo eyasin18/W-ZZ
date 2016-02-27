@@ -173,4 +173,12 @@ public class MainKatego extends AppCompatActivity {
         editor.putBoolean("isSet", false);
         editor.apply();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (SplashActivity.mGoogleApiClient.isConnected()) {
+            SplashActivity.mGoogleApiClient.disconnect();
+        }
+    }
 }

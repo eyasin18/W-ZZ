@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
     private static final String TWITTER_SECRET = "b1uVjJ980WqJ7RZSzHB1Lq3ZHJFytZXYtdsPLKMZnzLBVEZoi3";
     private static final String TAG = "Splash";
     public static int platform;
-    private GoogleApiClient mGoogleApiClient;
+    public static GoogleApiClient mGoogleApiClient;
     public static String drawerName, drawerEmail, coverUrl, picUrl;
     public static ImageView drawerPic, drawerCover;
 
@@ -93,13 +93,6 @@ public class SplashActivity extends AppCompatActivity implements GoogleApiClient
                 Log.i(TAG, "onStart: getProfile started");
                 getProfileInformation(null);
             }
-        }
-    }
-
-    protected void onStop() {
-        super.onStop();
-        if (mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
         }
     }
 

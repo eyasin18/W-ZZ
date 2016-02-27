@@ -1,6 +1,5 @@
 package de.repictures.wzz.internet;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
@@ -11,8 +10,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
-import java.util.HashSet;
-import java.util.Set;
 
 import de.repictures.wzz.DetailActivity;
 import de.repictures.wzz.MainJokes;

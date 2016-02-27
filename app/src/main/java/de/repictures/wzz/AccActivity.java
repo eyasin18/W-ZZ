@@ -24,7 +24,6 @@ import butterknife.ButterKnife;
 import de.repictures.wzz.adapter.JokesAdapter;
 import de.repictures.wzz.internet.witzNachUser;
 
-
 public class AccActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Bind(R.id.accCover) ImageView accCover;

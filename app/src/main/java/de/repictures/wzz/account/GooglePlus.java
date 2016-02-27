@@ -7,7 +7,6 @@ import android.util.Log;
 import com.google.android.gms.plus.model.people.Person;
 
 import de.repictures.wzz.AsyncTasks.CheckData;
-import de.repictures.wzz.AsyncTasks.PassData;
 import de.repictures.wzz.R;
 import de.repictures.wzz.StartActivity;
 

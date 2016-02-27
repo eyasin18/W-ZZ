@@ -39,15 +39,13 @@ public class DetailListAdapter extends RecyclerView.Adapter<DetailViewHolder> im
     private final CoordinatorLayout coordinatorLayout;
     private List<String> names;
     private List<String> photos;
-    private List<String> userKeys;
     public static Boolean time = true;
     Handler handler = new Handler();
     List<String> comments = new ArrayList<>(), votes = new ArrayList<>();
-    List<String[]> infolist = new ArrayList<>();
 
     public DetailListAdapter(Activity activity, String witz_raw, List<String> comments,
                              List<String> votes, List<String> names, List<String> photos,
-                             List<String> userKeys, ArrayList<Boolean> voted,
+                             ArrayList<Boolean> voted,
                              ArrayList<String> commentKeys, Boolean footer, Boolean voter,
                              CoordinatorLayout coordinatorLayout) {
         this.activity = activity;
@@ -58,7 +56,6 @@ public class DetailListAdapter extends RecyclerView.Adapter<DetailViewHolder> im
         this.coordinatorLayout = coordinatorLayout;
         if (names != null) this.names = names;
         if (photos != null) this.photos = photos;
-        if (userKeys != null) this.userKeys = userKeys;
         if (comments != null) this.comments = comments;
         Log.d(TAG, "DetailListAdapter " + witz_raw);
         witz_split = witz_raw.split("~");

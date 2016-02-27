@@ -47,7 +47,7 @@ public class DetailAsyncTask extends AsyncTask<String, Void, String[]>{
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(activity);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerAdapter = new DetailListAdapter(activity, raw_infos, null, null, null, null, null, null, null, false, true, coordinatorLayout);
+        recyclerAdapter = new DetailListAdapter(activity, raw_infos, null, null, null, null, null, null, false, true, coordinatorLayout);
         recyclerView.setAdapter(recyclerAdapter);
     }
 
@@ -86,7 +86,7 @@ public class DetailAsyncTask extends AsyncTask<String, Void, String[]>{
                     photos = new ArrayList<>(), userKeys = new ArrayList<>(), commentKeys = new ArrayList<>();
             ArrayList<Boolean> voted = new ArrayList<>();
             recyclerAdapter = new DetailListAdapter(activity, raw_infos, comments,
-                    votes, names, photos, userKeys, voted, commentKeys, null, voter, coordinatorLayout);
+                    votes, names, photos, voted, commentKeys, null, voter, coordinatorLayout);
             recyclerView.swapAdapter(recyclerAdapter, true);
             for (int c = 0; c < result.length; c += 7) {
                 comments.add(result[c]);
@@ -103,7 +103,7 @@ public class DetailAsyncTask extends AsyncTask<String, Void, String[]>{
         } else {
             Log.i(TAG, "onPostExecute: length == 0");
             recyclerAdapter = new DetailListAdapter(activity, raw_infos, null,
-                    null, null, null, null, null, null, true, voter, coordinatorLayout);
+                    null, null, null, null, null, true, voter, coordinatorLayout);
             recyclerView.swapAdapter(recyclerAdapter, false);
             recyclerAdapter.notifyDataSetChanged();
         }

@@ -13,7 +13,6 @@ import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.models.User;
 
 import de.repictures.wzz.AsyncTasks.CheckData;
-import de.repictures.wzz.AsyncTasks.PassData;
 import de.repictures.wzz.R;
 import de.repictures.wzz.StartActivity;
 import retrofit.http.GET;
