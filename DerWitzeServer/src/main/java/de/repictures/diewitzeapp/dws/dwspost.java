@@ -129,7 +129,7 @@ public class dwspost extends HttpServlet {
                 new getRating(datastore, key, resp);
                 break;
             case 11: //Profil aktualisieren
-                new updateProfile(datastore, key, user, email, photoUrl, coverUrl, devise, resp);
+                new updateProfile(datastore, key, user, email, photoUrl, coverUrl, devise, inhalt, katego, resp);
                 break;
             case 12: //Profil + Witze ausgeben
                 try {

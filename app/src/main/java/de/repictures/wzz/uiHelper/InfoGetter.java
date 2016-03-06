@@ -79,13 +79,13 @@ public class InfoGetter {
                 coverUrl != getProfile.infos[4]){
             PassData mAuthTask = new PassData(person.getId(), getProfile.infos[0],
                     2, personPic, coverUrl,
-                    activity, false, getProfile.infos[5], null, null, 0);
+                    activity, false, getProfile.infos[5], null, null, 0, null, null);
             mAuthTask.execute((Void) null);
         }
         SplashActivity.drawerName = getProfile.infos[0];
         InfoGetter.coverUrl = coverUrl;
         InfoGetter.profileUrl = personPic;
-        SplashActivity.drawerEmail = "";
+        SplashActivity.drawerEmail = getProfile.infos[9];
         SplashActivity.coverUrl = coverUrl;
         SplashActivity.picUrl = profileUrl;
         Intent i = new Intent(activity, MainKatego.class);
@@ -101,14 +101,14 @@ public class InfoGetter {
                 coverUrl != getProfile.infos[4]){
             PassData mAuthTask = new PassData(idStr, personName,
                     2, personPhotoUrl, coverUrl,
-                    activity, false, getProfile.infos[5], null, null, 0);
+                    activity, false, getProfile.infos[5], null, null, 0, null, null);
             mAuthTask.execute((Void) null);
         }
         SplashActivity.drawerName = personName;
         SplashActivity.coverUrl = coverUrl;
         SplashActivity.picUrl = personPhotoUrl;
         InfoGetter.profileUrl = personPhotoUrl;
-        SplashActivity.drawerEmail = "";
+        SplashActivity.drawerEmail = getProfile.infos[9];
         Intent i = new Intent(activity, MainKatego.class);
         activity.startActivity(i);
         activity.finish();
@@ -135,11 +135,11 @@ public class InfoGetter {
                                 coverUrl != getProfile.infos[4]){
                             PassData mAuthTask = new PassData(email, name,
                                     2, profilePic, coverUrl,
-                                    activity, false, getProfile.infos[5], null, null, 0);
+                                    activity, false, getProfile.infos[5], null, null, 0, null, null);
                             mAuthTask.execute((Void) null);
                         }
                         SplashActivity.drawerName = name.replace("+", " ");
-                        SplashActivity.drawerEmail = "";
+                        SplashActivity.drawerEmail = getProfile.infos[9];
                         InfoGetter.coverUrl = coverUrl;
                         InfoGetter.profileUrl = profilePic;
                         SplashActivity.coverUrl = coverUrl;

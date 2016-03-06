@@ -8,7 +8,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="@string/large_text" />
+        android:padding="16dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/about_text"
+        android:text="@string/no_text" />
 
 </android.support.v4.widget.NestedScrollView>

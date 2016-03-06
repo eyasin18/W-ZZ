@@ -19,10 +19,13 @@ public class ProfilePagerAdapter extends FragmentStatePagerAdapter {
     private final String[] tabTitles;
     private String[] profileInfos;
     private String[] jokes;
+    private String[] abos;
 
-    public ProfilePagerAdapter(FragmentManager fragManager, String[] tabTitles, String[] response, String userKey) {
+    public ProfilePagerAdapter(FragmentManager fragManager, String[] tabTitles, String[] rawSplit, String userKey) {
         super(fragManager);
         this.tabTitles = tabTitles;
+        String[] response = rawSplit[0].split("~");
+        abos = rawSplit[1].split("</~>");
         List<String> preprofile = new LinkedList<>(Arrays.asList(Arrays.copyOfRange(response, 0, 6)));
         preprofile.add(userKey);
         this.profileInfos = new String[preprofile.size()];
@@ -38,14 +41,18 @@ public class ProfilePagerAdapter extends FragmentStatePagerAdapter {
                 Bundle bundle = new Bundle();
                 bundle.putStringArray("jokes", jokes);
                 bundle.putStringArray("profile", profileInfos);
-                MyProfileJokesFragment fragment = new MyProfileJokesFragment();
-                fragment.setArguments(bundle);
-                return fragment;
+                MyProfileJokesFragment jfragment = new MyProfileJokesFragment();
+                jfragment.setArguments(bundle);
+                return jfragment;
             case 1:
             default:
                 return new MyProfileAboutFragment();
             case 2:
-                return new MyProfileFollowingFragment();
+                bundle = new Bundle();
+                bundle.putStringArray("following", abos);
+                MyProfileFollowingFragment ffragment = new MyProfileFollowingFragment();
+                ffragment.setArguments(bundle);
+                return ffragment;
         }
     }
 

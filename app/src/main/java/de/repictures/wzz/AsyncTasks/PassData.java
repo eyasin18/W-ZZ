@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
@@ -26,15 +25,12 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import de.repictures.wzz.MainJokes;
-import de.repictures.wzz.MainKatego;
 import de.repictures.wzz.SplashActivity;
-import de.repictures.wzz.StartActivity;
-import de.repictures.wzz.uiHelper.InfoGetter;
-import de.repictures.wzz.uiHelper.getPictures;
 
 public class PassData extends AsyncTask<Void, Void, Boolean> {
 
     private static final String TAG = "PassData";
+    private final String vName;
     private String email;
     private String name;
     private final String personPic;
@@ -46,14 +42,15 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
     private final ProgressBar progressbar;
     private final ImageView check;
     private final int crazyValue;
+    private final String about;
     private String devise;
     URLConnection urlConnection;
 
     public PassData(String email, String name, int platform, String personPic, String coverUrl, Activity activity,
                     boolean firstConnect, String devise, ProgressBar progressbar, ImageView check,
-                    int crazyValue) {
-        this.email = email;
-        this.name = name;
+                    int crazyValue, String about, String vName) {
+        this.email = encoder(email);
+        this.name = encoder(name);
         this.personPic = personPic;
         this.coverUrl = coverUrl;
         this.activity = activity;
@@ -62,13 +59,15 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
         this.progressbar = progressbar;
         this.check = check;
         this.crazyValue = crazyValue;
-        this.devise = getDevise(devise);
+        this.vName = encoder(vName);
+        this.about = encoder(about);
+        this.devise = encoder(devise);
     }
 
-    private String getDevise(String devise) {
-        if (devise != null){
+    private String encoder(String string) {
+        if (string != null){
             try {
-                return URLEncoder.encode(devise, "UTF-8");
+                return URLEncoder.encode(string, "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
                 return null;
@@ -94,7 +93,9 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
                     + "&platform=" + platform
                     + "&devise=" + devise
                     + "&key=" + liesKey()
-                    + "&count=" + crazyValue);
+                    + "&count=" + crazyValue
+                    + "&inhalt=" + about
+                    + "&katego=" + vName);
             Log.i(TAG, "doInBackground: " + url);
             urlConnection = url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());

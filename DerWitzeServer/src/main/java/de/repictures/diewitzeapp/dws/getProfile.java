@@ -50,7 +50,8 @@ public class getProfile {
                 String output = userProfile.getProperty("name") + "</we>" + userProfile.getProperty("photoUrl") + "</we>"
                         + userProfile.getProperty("email") + "</we>" + userProfile.getProperty("platform") + "</we>"
                         + userProfile.getProperty("coverUrl") + "</we>" + userProfile.getProperty("devise") + "</we>"
-                        + subs + "</we>" + abojokes;
+                        + subs + "</we>" + abojokes + "</we>" + userProfile.getProperty("about") + "</we>"
+                        + userProfile.getProperty("Visible Name");
                 log.info(output);
                 resp.getWriter().println(URLEncoder.encode(output, "UTF-8"));
             } catch (EntityNotFoundException e) {

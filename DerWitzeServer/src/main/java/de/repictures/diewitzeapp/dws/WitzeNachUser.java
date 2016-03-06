@@ -43,6 +43,15 @@ public class WitzeNachUser {
                     + e.getProperty("key") + "~" + userE.getProperty("photoUrl") + "~" + userE.getProperty("devise") + "~"
                     + voted + "~" + reported + "~" + e.getProperty("VotingKey") + "~" + e.getProperty("user") + "~";
         }
+        output += "</we>";
+        ArrayList<String> abolist;
+        try {
+            abolist = (ArrayList<String>) user.getProperty("abos");
+            for (int i = 0; i < abolist.size(); i++){
+                Entity abo = datastore.get(KeyFactory.stringToKey(abolist.get(i)));
+                output += abolist.get(i) + "~" + abo.getProperty("name") + "~" + abo.getProperty("photoUrl") + "</~>";
+            }
+        } catch (NullPointerException ignored){}
         resp.getWriter().println(URLEncoder.encode(profileStr, "UTF-8") + URLEncoder.encode(output.replace("\n", "<br />"), "UTF-8"));
     }
 }

@@ -23,10 +23,10 @@ public class getProfileExtended {
         Query query = new Query("userPosting", profileKey);
         query.addSort("datum", Query.SortDirection.DESCENDING);
         List<Entity> userPosts = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
-        // List<Entity> output = userPosts.subList(count, count + 5); TODO: Lazy Loading?!
         String profileStr = profile.getProperty("name") + "~" + profile.getProperty("photoUrl") + "~"
                 + profile.getProperty("email") + "~" + profile.getProperty("platform") + "~"
-                + profile.getProperty("coverUrl") + "~" + profile.getProperty("devise") + "~";
+                + profile.getProperty("coverUrl") + "~" + profile.getProperty("devise") + "~"
+                + profile.getProperty("about") + "~";
         String output = "";
         for (Entity e : userPosts){
             String ratingKeyStr = (String) e.getProperty("VotingKey");
@@ -40,6 +40,15 @@ public class getProfileExtended {
                     rating.getProperty("Reports") + "~" + e.getProperty("key") + "~" +
                     voted + "~" + reported + "~" + e.getProperty("VotingKey") + "~";
         }
+        output += "</we>";
+        ArrayList<String> abolist;
+        try {
+            abolist = (ArrayList<String>) profile.getProperty("abos");
+            for (int i = 0; i < abolist.size(); i++){
+                Entity abo = datastore.get(KeyFactory.stringToKey(abolist.get(i)));
+                output += abolist.get(i) + "~" + abo.getProperty("name") + "~" + abo.getProperty("photoUrl") + "</~>";
+            }
+        } catch (NullPointerException ignored){}
         resp.getWriter().println(URLEncoder.encode(profileStr + output.replace("\n", "<br />"), "UTF-8"));
     }
 }

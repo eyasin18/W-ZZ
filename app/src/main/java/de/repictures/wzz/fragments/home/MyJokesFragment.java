@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -53,6 +54,7 @@ import de.repictures.wzz.uiHelper.getPictures;
 public class MyJokesFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "MyJokesFragment";
+    public static CoordinatorLayout myJokesCL;
     ImageView accCover, accPb, share, settings;
     Thread s;
     FloatingActionButton myProfile;
@@ -73,6 +75,7 @@ public class MyJokesFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_my_jokes, container, false);
 
+        myJokesCL = (CoordinatorLayout) rootView.findViewById(R.id.main_content);
         myProfile = (FloatingActionButton) rootView.findViewById(R.id.logout_fab);
         myProfile.setOnClickListener(this);
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) rootView.findViewById(R.id.collapsingToolbarLayout);
@@ -81,7 +84,7 @@ public class MyJokesFragment extends Fragment implements View.OnClickListener {
         appBar = (AppBarLayout) rootView.findViewById(R.id.appbar);
         final TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.accTabs);
         share = (ImageView) rootView.findViewById(R.id.my_jokes_share);
-        settings = (ImageView) rootView.findViewById(R.id.my_jokes_settings);
+        //settings = (ImageView) rootView.findViewById(R.id.my_jokes_settings);
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addApi(Plus.API)
                 .addScope(Plus.SCOPE_PLUS_LOGIN)
@@ -97,13 +100,13 @@ public class MyJokesFragment extends Fragment implements View.OnClickListener {
                     myProfile.hide();
                     view.animate().setDuration(shortAnimTime).translationY(-MainKatego.toolbar.getHeight()*3/2).start();
                     share.animate().setDuration(shortAnimTime).alpha(1).start();
-                    settings.animate().setDuration(shortAnimTime).alpha(1).start();
+                    //settings.animate().setDuration(shortAnimTime).alpha(1).start();
                     collapsed = true;
                     Log.d(TAG, "onStateChanged: changed");
                 } else if (state == State.IDLE && collapsed){
                     view.animate().setDuration(shortAnimTime).translationY(tabLayout.getX()).start();
                     share.animate().setDuration(shortAnimTime).alpha(0).start();
-                    settings.animate().setDuration(shortAnimTime).alpha(0).start();
+                    //settings.animate().setDuration(shortAnimTime).alpha(0).start();
                     myProfile.show();
                     collapsed = false;
                 }

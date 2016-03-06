@@ -90,14 +90,14 @@ public class ProfileAsyncTask extends AsyncTask<String, Void, String[]>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return resp.split("~");
+        return resp.split("</we>");
     }
 
     @Override
     protected void onPostExecute(String[] response) {
         Log.i(TAG, "onPostExecute: " + Arrays.toString(response));
-        new Thread(new getPictures(response[1], pb, null, activity, true, true, false)).start();
-        new Thread(new getPictures(response[4], cover, null, activity, false, true, true)).start();
+        new Thread(new getPictures(response[0].split("~")[1], pb, null, activity, true, true, false)).start();
+        new Thread(new getPictures(response[0].split("~")[4], cover, null, activity, false, true, true)).start();
         scrollView.setVisibility(View.GONE);
         viewPager.setVisibility(View.VISIBLE);
         viewPager.setAdapter(new ProfilePagerAdapter(fragmentManager, tabTitles, response));
@@ -110,16 +110,20 @@ public class ProfileAsyncTask extends AsyncTask<String, Void, String[]>{
         private final String[] tabTitles;
         private String[] profileInfos;
         private String[] jokes;
+        private String[] abos;
 
-        public ProfilePagerAdapter(FragmentManager fragManager, String[] tabTitles, String[] response) {
+        public ProfilePagerAdapter(FragmentManager fragManager, String[] tabTitles, String[] rawSplit) {
             super(fragManager);
             this.tabTitles = tabTitles;
-            List<String> preprofile = new LinkedList<>(Arrays.asList(Arrays.copyOfRange(response, 0, 6)));
+            String[] response = rawSplit[0].split("~");
+            Log.d(TAG, "ProfilePagerAdapter: " + Arrays.toString(response));
+            abos = rawSplit[1].split("</~>");
+            List<String> preprofile = new LinkedList<>(Arrays.asList(Arrays.copyOfRange(response, 0, 7)));
             preprofile.add(userKey);
             this.profileInfos = new String[preprofile.size()];
             this.profileInfos = preprofile.toArray(this.profileInfos);
             Log.d(TAG, "ProfilePagerAdapter: profileInfos: " + Arrays.toString(profileInfos));
-            this.jokes = Arrays.copyOfRange(response, 6, response.length);
+            this.jokes = Arrays.copyOfRange(response, 7, response.length);
             Log.d(TAG, "ProfilePagerAdapter: jokes: " + Arrays.toString(jokes));
 
         }
@@ -128,18 +132,26 @@ public class ProfileAsyncTask extends AsyncTask<String, Void, String[]>{
         public android.support.v4.app.Fragment getItem(int position) {
             switch (position) {
                 case 0:
+                    default:
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("jokes", jokes);
                     bundle.putStringArray("profile", profileInfos);
                     Log.i(TAG, "getItem: " + Arrays.toString(jokes));
-                    ProfileJokesFragment fragment = new ProfileJokesFragment();
-                    fragment.setArguments(bundle);
-                    return fragment;
+                    ProfileJokesFragment jfragment = new ProfileJokesFragment();
+                    jfragment.setArguments(bundle);
+                    return jfragment;
                 case 1:
-                default:
-                    return new ProfileAboutFragment();
+                    bundle = new Bundle();
+                    bundle.putString("about", profileInfos[6]);
+                    ProfileAboutFragment afragment = new ProfileAboutFragment();
+                    afragment.setArguments(bundle);
+                    return afragment;
                 case 2:
-                    return new MyProfileFollowingFragment();
+                    bundle = new Bundle();
+                    bundle.putStringArray("following", abos);
+                    MyProfileFollowingFragment ffragment = new MyProfileFollowingFragment();
+                    ffragment.setArguments(bundle);
+                    return ffragment;
             }
         }
 

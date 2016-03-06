@@ -1,6 +1,7 @@
 package de.repictures.wzz;
 
 import android.os.Build;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Slide;
@@ -9,7 +10,6 @@ import android.view.Gravity;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -75,9 +75,15 @@ public class ApplyActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: " + crazyValue);
         }
         String[] data = getIntent().getStringArrayExtra("data");
-        PassData mAuthTask = new PassData(data[0], data[1],
+        final PassData mAuthTask = new PassData(data[0], data[1],
                 Integer.parseInt(data[2]), data[3], data[4],
-                this, Boolean.parseBoolean(data[5]), data[6], progressbar, check, crazyValue);
-        mAuthTask.execute((Void) null);
+                this, Boolean.parseBoolean(data[5]), data[6], progressbar, check, crazyValue, null, null);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAuthTask.execute((Void) null);
+            }
+        }, 1000);
     }
 }

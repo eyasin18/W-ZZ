@@ -151,7 +151,6 @@
     <string name="import_image">Profilbild importieren aus…</string>
     <string name="login_with_email">Mit Email anmelden</string>
     <string name="add_wizzle">Wizzle hinzufügen</string>
-    <string name="title_activity_profile"> </string>
     <string name="favored">Favorisiert</string>
     <string name="defavored">Von Favoriten entfernt</string>
     <string name="about">Info</string>
@@ -165,7 +164,6 @@
     <string name="unsubscribed">Deabonniert</string>
     <string name="back">Zurück</string>
     <string name="like">Mag ich</string>
-    <string name="login_quote"></string>
     <string name="not_like">Mag ich nicht</string>
     <string name="wich_joke">Gefällt dir dieser Wizzle?</string>
     <string name="bsp_joke_1">Habe mir mit mEiner freundin aLle twilight Filme ausgeliehen, besTe sache die Mir passIeRen kann!</string>
@@ -176,4 +174,20 @@
     <string name="no_jokes">Keine Witze verfügbar</string>
     <string name="uploading_data">Profil wird gespeichert</string>
     <string name="welcome">W!ZZ</string>
+    <string name="about_illegal">Über mich darf nicht </string>
+    <string name="contain"> beinhalten</string>
+    <string name="about_too_short">Über mich muss mindestens 5 Zeichen lang sein</string>
+    <string name="anonymous_name">Deckname</string>
+    <string name="name_illegal">Dein Deckname darf nicht </string>
+    <string name="name_too_short">Dein Deckname muss mindestens 5 Zeichen lang sein</string>
+    <string name="or">oder</string>
+    <string name="real_name">Echter Name</string>
+    <string name="status">Status</string>
+    <string name="status_illegal">Dein Status darf nicht </string>
+    <string name="status_too_short">Dein Status muss mindestens 5 Zeichen lang sein</string>
+    <string name="vname_illegal">Dein echter Name darf nicht </string>
+    <string name="vname_too_short">Kein Name ist so kurz!</string>
+    <string name="names_equal">Dein Deckname darf nicht dein echter Name sein</string>
+    <string name="no_text">Dieser Nutzer hat noch keine Beschreibung hinzugefügt</string>
+    <string name="saved">Änderungen gespeichert</string>
 </resources>

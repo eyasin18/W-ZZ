@@ -205,7 +205,6 @@
     <string name="error_password_not_matching">Passwords are not matching</string>
     <string name="import_image">Import profile picture with...</string>
     <string name="login_with_email">Log in with email</string>
-    <string name="title_activity_profile" translatable="false">Profil</string>
 
     <string name="title_activity_main" translatable="false">Fab Dialog Morph Animation</string>
     <string name="transition_dialog" translatable="false">transition_dialog</string>
@@ -310,10 +309,10 @@
     <string name="no_comments">No comments</string>
     <string name="no_more_jokes">No more jokes available</string>
     <string name="welcome">Welcome!</string>
-    <string name="login_quote">And may the Force be with you!</string>
+    <string name="login_quote" translatable="false">And may the Force be with you!</string>
     <string name="subscribed">Subscribed</string>
     <string name="unsubscribed">Unsubscribed</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="section_format" translatable="false">Hello World from section: %1$d</string>
     <string name="back">Back</string>
     <string name="like">Like</string>
     <string name="not_like">Don\'t like</string>
@@ -325,5 +324,21 @@
     <string name="bsp_joke_5">joke 5</string>
     <string name="uploading_data">Saving data</string>
     <string name="no_jokes">No jokes available</string>
+    <string name="anonymous_name">Pseudonym</string>
+    <string name="status">Status</string>
+    <string name="name_too_short">Name must contain at least 5 characters</string>
+    <string name="real_name">Real name</string>
+    <string name="status_too_short">Your status must contain at least 5 characters</string>
+    <string name="vname_too_short">No name is that short!</string>
+    <string name="about_too_short">About me must contain at least 5 characters</string>
+    <string name="name_illegal">Name may not contain </string>
+    <string name="vname_illegal">Real name may not contain </string>
+    <string name="or">or</string>
+    <string name="status_illegal">Status may not contain </string>
+    <string name="about_illegal">About me may not contain </string>
+    <string name="contain">contain</string>
+    <string name="names_equal">Pseudonym and your real name may not be the same</string>
+    <string name="no_text">The user hasn\'t specified a description yet</string>
+    <string name="saved">Saved changes</string>
 
 </resources>

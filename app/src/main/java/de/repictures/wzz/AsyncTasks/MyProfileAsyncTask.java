@@ -89,14 +89,14 @@ public class MyProfileAsyncTask extends AsyncTask<String, Void, String[]>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return resp.split("~");
+        return resp.split("</we>");
     }
 
     @Override
     protected void onPostExecute(String[] response) {
         Log.i(TAG, "onPostExecute: " + Arrays.toString(response));
-        new Thread(new getPictures(response[1], pb, null, activity, true, true, false)).start();
-        new Thread(new getPictures(response[4], cover, null, activity, false, true, true)).start();
+        new Thread(new getPictures(response[0].split("~")[1], pb, null, activity, true, true, false)).start();
+        new Thread(new getPictures(response[0].split("~")[4], cover, null, activity, false, true, true)).start();
         scrollView.setVisibility(View.GONE);
         viewPager.setVisibility(View.VISIBLE);
         viewPager.setAdapter(new ProfilePagerAdapter(fragmentManager, tabTitles, response, userKey));

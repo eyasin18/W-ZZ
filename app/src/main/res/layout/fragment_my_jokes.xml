@@ -60,14 +60,14 @@
                 android:id="@+id/my_jokes_username"
                 style="@style/Base.TextAppearance.AppCompat.Headline" />
 
-            <ImageView
+            <!--<ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:alpha="0"
                 android:id="@+id/my_jokes_settings"
                 android:src="@drawable/ic_settings_white_18dp"
-                android:layout_gravity="end"/>
+                android:layout_gravity="end"/> -->
 
             <ImageView
                 android:layout_width="wrap_content"

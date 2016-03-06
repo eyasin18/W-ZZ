@@ -1,40 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     app:theme="@style/ProfileTheme">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="62dp">
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/profile_name_edit_label"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
 
-        <EditText
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:id="@+id/profile_name_edit"
+                android:layout_alignParentTop="true"
+                android:hint="@string/anonymous_name"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/profile_vname_edit_label"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/profile_name_edit_label">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:id="@+id/profile_vname_edit"
+                android:layout_alignParentTop="true"
+                android:hint="@string/real_name"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/profile_status_edit_label"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/profile_vname_edit_label">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profile_status_edit"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
+                android:hint="@string/status"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/profile_about_edit_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:id="@+id/profile_name_edit"
-            android:layout_alignParentTop="true"/>
+            android:minHeight="100dp"
+            android:layout_below="@+id/profile_status_edit_label"
+            android:paddingBottom="16dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/profile_status_edit"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:layout_below="@+id/profile_name_edit"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/profile_about_edit"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
+                android:hint="@string/prompt_about_me"/>
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/apply"
             android:id="@+id/profile_apply_button"
-            android:layout_below="@+id/profile_status_edit"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/profile_about_edit_label"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>
