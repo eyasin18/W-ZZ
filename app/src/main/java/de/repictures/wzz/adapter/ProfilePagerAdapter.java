@@ -1,6 +1,7 @@
 package de.repictures.wzz.adapter;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -25,12 +26,16 @@ public class ProfilePagerAdapter extends FragmentStatePagerAdapter {
         super(fragManager);
         this.tabTitles = tabTitles;
         String[] response = rawSplit[0].split("~");
-        abos = rawSplit[1].split("</~>");
-        List<String> preprofile = new LinkedList<>(Arrays.asList(Arrays.copyOfRange(response, 0, 6)));
+        try {
+            abos = rawSplit[1].split("</~>");
+        } catch (ArrayIndexOutOfBoundsException ignore){
+            abos = null;
+        }
+        List<String> preprofile = new LinkedList<>(Arrays.asList(Arrays.copyOfRange(response, 0, 8)));
         preprofile.add(userKey);
         this.profileInfos = new String[preprofile.size()];
         this.profileInfos = preprofile.toArray(this.profileInfos);
-        this.jokes = Arrays.copyOfRange(response, 6, response.length);
+        this.jokes = Arrays.copyOfRange(response, 8, response.length);
 
     }
 
@@ -46,13 +51,21 @@ public class ProfilePagerAdapter extends FragmentStatePagerAdapter {
                 return jfragment;
             case 1:
             default:
-                return new MyProfileAboutFragment();
-            case 2:
                 bundle = new Bundle();
-                bundle.putStringArray("following", abos);
-                MyProfileFollowingFragment ffragment = new MyProfileFollowingFragment();
-                ffragment.setArguments(bundle);
-                return ffragment;
+                bundle.putStringArray("profile", profileInfos);
+                MyProfileAboutFragment afragment = new MyProfileAboutFragment();
+                afragment.setArguments(bundle);
+                return afragment;
+            case 2:
+                if (abos != null){
+                    bundle = new Bundle();
+                    bundle.putStringArray("following", abos);
+                    MyProfileFollowingFragment ffragment = new MyProfileFollowingFragment();
+                    ffragment.setArguments(bundle);
+                    return ffragment;
+                } else {
+                    return new Fragment();
+                }
         }
     }
 

@@ -13,7 +13,9 @@
         <item name="colorPrimary">#00BCD4</item>
         <item name="colorPrimaryDark">#0097A7</item>
         <item name="colorAccent">#FFEB3B</item>
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>

@@ -23,12 +23,6 @@ public class ApplyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-            Slide slide = new Slide();
-            slide.setSlideEdge(Gravity.RIGHT);
-            getWindow().setEnterTransition(slide);
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply);
         ButterKnife.bind(this);
@@ -77,7 +71,8 @@ public class ApplyActivity extends AppCompatActivity {
         String[] data = getIntent().getStringArrayExtra("data");
         final PassData mAuthTask = new PassData(data[0], data[1],
                 Integer.parseInt(data[2]), data[3], data[4],
-                this, Boolean.parseBoolean(data[5]), data[6], progressbar, check, crazyValue, null, null);
+                this, Boolean.parseBoolean(data[5]), data[8],
+                progressbar, check, crazyValue, data[9], null, Boolean.parseBoolean(data[7]));
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

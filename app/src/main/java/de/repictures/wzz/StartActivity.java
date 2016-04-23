@@ -49,12 +49,6 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-            Slide slide = new Slide();
-            slide.setSlideEdge(Gravity.LEFT);
-            getWindow().setExitTransition(slide);
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
@@ -87,17 +81,11 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     likes[progress/20] = 1;
                     Log.d(TAG, "onClick: " + Arrays.toString(likes));
-                    Intent i = new Intent(this, ApplyActivity.class);
+                    Intent i = new Intent(this, EditActivity.class);
                     i.putExtra("likes", likes);
                     i.putExtra("data", getIntent().getStringArrayExtra("data"));
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        finish();
-                        startActivity(i,
-                                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-                    } else {
-                        finish();
-                        startActivity(i);
-                    }
+                    finish();
+                    startActivity(i);
                 }
                 break;
             case R.id.start_dislike:
@@ -109,17 +97,11 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     likes[progress/20] = 0;
                     Log.d(TAG, "onClick: " + Arrays.toString(likes));
-                    Intent i = new Intent(this, ApplyActivity.class);
+                    Intent i = new Intent(this, EditActivity.class);
                     i.putExtra("likes", likes);
                     i.putExtra("data", getIntent().getStringArrayExtra("data"));
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        finish();
-                        startActivity(i,
-                                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-                    } else {
-                        finish();
-                        startActivity(i);
-                    }
+                    finish();
+                    startActivity(i);
                 }
                 break;
         }

@@ -2,4 +2,5 @@
 <resources>
     <dimen name="toolbarPadding">24dp</dimen>
     <dimen name="toolbarSize">80dp</dimen>
+    <dimen name="navigation_bar_height">48dp</dimen>
 </resources>

@@ -2,6 +2,7 @@ package de.repictures.wzz;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
@@ -10,7 +11,6 @@ import android.content.IntentSender;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Point;
 import android.net.Uri;
@@ -18,12 +18,11 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -31,11 +30,13 @@ import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,17 +45,12 @@ import android.widget.ViewFlipper;
 import com.crashlytics.android.Crashlytics;
 import com.facebook.login.widget.LoginButton;
 import com.flaviofaria.kenburnsview.KenBurnsView;
-import com.flaviofaria.kenburnsview.Transition;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
-import com.google.android.gms.plus.model.people.PersonBuffer;
 import com.squareup.picasso.Picasso;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
@@ -80,8 +76,6 @@ import de.repictures.wzz.account.GooglePlus;
 import de.repictures.wzz.uiHelper.BlurTransform;
 import io.fabric.sdk.android.Fabric;
 
-import static android.Manifest.permission.READ_CONTACTS;
-
 public class NewLoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final int REQUEST_READ_CONTACTS = 0;
@@ -104,8 +98,14 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private CardView socialCard, emailCard;
+    private TextView noAccTxt, regTxt;
+    Boolean cardsCollapsed = false;
+    int emailHeight;
+    float socialY;
     private View mProgressView;
     private Button mEmailSignInButton, mRegisterButton, mEmailLoginButton;
+    private ImageButton twitter, facebook, google;
     public static Boolean emailValid = false;
     TwitterLoginButton mTwitterButton;
     SignInButton mGoogleButton;
@@ -122,6 +122,12 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_login);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+        }
         if(getResources().getBoolean(R.bool.portrait_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -131,14 +137,15 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        long verhältnis = size.y/size.x;
-        int height = Math.round(480*verhältnis);
-        Picasso.with(NewLoginActivity.this).load(R.drawable.background).resize(size.x/4, size.y/4).centerCrop().transform(new BlurTransform(this, 8)).into(background);
+        int resourceId = getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+        long navBarHeight = getResources().getDimensionPixelSize(resourceId);
+        background.setMinimumHeight(Math.round(size.y + navBarHeight));
+        Picasso.with(NewLoginActivity.this).load(R.drawable.background).resize(size.x/4, Math.round(size.y/4 + navBarHeight / 4)).centerCrop().transform(new BlurTransform(this, 8)).into(background);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        /*mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -147,15 +154,29 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
                 }
                 return false;
             }
-        });
+        });*/
 
+        socialCard = (CardView) findViewById(R.id.social_card);
+        socialY = socialCard.getY();
+        emailCard = (CardView) findViewById(R.id.email_card);
+        emailHeight = emailCard.getHeight();
+        noAccTxt = (TextView) findViewById(R.id.no_account);
+        noAccTxt.setOnClickListener(this);
+        regTxt = (TextView) findViewById(R.id.register_text);
+        regTxt.setOnClickListener(this);
+        twitter = (ImageButton) findViewById(R.id.login_twitter);
+        twitter.setOnClickListener(this);
+        facebook = (ImageButton) findViewById(R.id.login_facebook);
+        facebook.setOnClickListener(this);
+        google = (ImageButton) findViewById(R.id.login_google);
+        google.setOnClickListener(this);
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        /*mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
             }
-        });
+        });*/
         mButtonsLayout = (RelativeLayout) findViewById(R.id.buttonsLayout);
         mLoginForm = (RelativeLayout) findViewById(R.id.email_login_form);
         mEmailLoginButton = (Button) findViewById(R.id.login_with_email_button);
@@ -255,7 +276,7 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private void attemptLogin() {
+    /*private void attemptLogin() {
         if (mAuthTask != null) {
             return;
         }
@@ -312,7 +333,7 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
 
     private boolean isPasswordValid(String password) {
         return password.length() > 4;
-    }
+    }*/
 
     /**
      * Shows the progress UI and hides the login form.
@@ -380,7 +401,9 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
 
     @Override
     public void onBackPressed() {
-        if (isEmailOpened){
+        if (cardsCollapsed){
+            collapseCards();
+        } else if (isEmailOpened){
             showEmail(false);
         } else {
             finish();
@@ -437,6 +460,95 @@ public class NewLoginActivity extends AppCompatActivity implements LoaderCallbac
                 platform = 3;
                 new Facebook(this);
                 break;
+            case R.id.login_facebook:
+                mFacebookButton.performClick();
+                break;
+            case R.id.login_twitter:
+                mTwitterButton.performClick();
+                break;
+            case R.id.login_google:
+                mGoogleButton.performClick();
+                break;
+            case R.id.no_account:
+                collapseCards();
+                break;
+            case R.id.register_text:
+                collapseCards();
+                break;
+        }
+    }
+
+    private void collapseCards() {
+        Display display = getWindowManager().getDefaultDisplay();
+        final Point size = new Point();
+        display.getSize(size);
+        final float centerY = size.y/2;
+        if (cardsCollapsed){
+            socialCard.animate().translationY(socialY).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    noAccTxt.animate().alpha(1).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            noAccTxt.setVisibility(View.VISIBLE);
+                        }
+                    });
+                    regTxt.animate().alpha(1).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            regTxt.setVisibility(View.VISIBLE);
+                        }
+                    });
+                    emailCard.animate().translationY(socialY);
+                    int cardMinHeight = (int) getResources().getDimension(R.dimen
+                            .email_card_min_height);
+                    ValueAnimator anim = ValueAnimator.ofInt(emailCard.getMeasuredHeightAndState(),
+                        cardMinHeight);
+                    anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                        @Override
+                        public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                            int val = (Integer) valueAnimator.getAnimatedValue();
+                            ViewGroup.LayoutParams layoutParams = emailCard.getLayoutParams();
+                            layoutParams.height = val;
+                            emailCard.setLayoutParams(layoutParams);
+                        }
+                    });
+                    anim.start();
+                }
+            });
+            cardsCollapsed = false;
+        } else {
+            socialCard.animate().translationY(centerY / 2).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    noAccTxt.animate().alpha(0).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            noAccTxt.setVisibility(View.GONE);
+                        }
+                    });
+                    regTxt.animate().alpha(0).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            regTxt.setVisibility(View.GONE);
+                        }
+                    });
+                    emailCard.animate().translationY(centerY/2);
+                    ValueAnimator anim2 = ValueAnimator.ofInt(emailCard.getMeasuredHeightAndState(),
+                            0);
+                    anim2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                        @Override
+                        public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                            int val = (Integer) valueAnimator.getAnimatedValue();
+                            ViewGroup.LayoutParams layoutParams = emailCard.getLayoutParams();
+                            layoutParams.height = val;
+                            emailCard.setLayoutParams(layoutParams);
+                        }
+                    });
+                    anim2.start();
+                }
+            });
+            cardsCollapsed = true;
         }
     }
 

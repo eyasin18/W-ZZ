@@ -15,10 +15,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import de.repictures.diewitzeapp.dws.database.GetRandomName;
+
 public class postPlatformProfile {
     public postPlatformProfile(DatastoreService datastore, String user, String email,
                                String photoUrl, String coverUrl, String devise, Boolean isEmail,
-                               int platform, int count, HttpServletResponse resp) throws IOException {
+                               int platform, int count, String lang, Boolean female, String about, HttpServletResponse resp)
+            throws IOException {
         Key personKey = KeyFactory.createKey("email", email);
         Query query = new Query("profile", personKey);
         List<Entity> profiles = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
@@ -40,6 +43,12 @@ public class postPlatformProfile {
             userProfile.setProperty("devise", "Hi <3");
             userProfile.setProperty("crazyValue", count);
             userProfile.setProperty("isEmail", isEmail);
+            userProfile.setProperty("level", 0);
+            new GetRandomName(userProfile, lang, female);
+            if (!about.equals("null"))userProfile.setProperty("about", about);
+            else userProfile.setProperty("about", null);
+            if (!devise.equals("null"))userProfile.setProperty("devise", devise);
+            else userProfile.setProperty("devise", null);
             ArrayList<String> voted = new ArrayList<>();
             voted.add("blub");
 

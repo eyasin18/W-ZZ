@@ -24,9 +24,11 @@ public class WitzeNachUser {
         query.addSort("datum", Query.SortDirection.DESCENDING);
         List<Entity> userPosts = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
         Entity user = datastore.get(KeyFactory.stringToKey(userStr));
-        String profileStr = user.getProperty("name") + "~" + user.getProperty("photoUrl") + "~"
+        String profileStr = user.getProperty("Visible Name") + "~"
+                + user.getProperty("name") + "~" + user.getProperty("photoUrl") + "~"
                 + user.getProperty("email") + "~" + user.getProperty("platform") + "~"
-                + user.getProperty("coverUrl") + "~" + user.getProperty("devise") + "~";
+                + user.getProperty("coverUrl") + "~" + user.getProperty("devise") + "~"
+                + user.getProperty("about") + "~";
         String output = "";
         for (Entity e : userPosts){
             String ratingKeyStr = (String) e.getProperty("VotingKey");

@@ -79,7 +79,7 @@ public class InfoGetter {
                 coverUrl != getProfile.infos[4]){
             PassData mAuthTask = new PassData(person.getId(), getProfile.infos[0],
                     2, personPic, coverUrl,
-                    activity, false, getProfile.infos[5], null, null, 0, null, null);
+                    activity, false, getProfile.infos[5], null, null, 0, null, null, null);
             mAuthTask.execute((Void) null);
         }
         SplashActivity.drawerName = getProfile.infos[0];
@@ -101,7 +101,7 @@ public class InfoGetter {
                 coverUrl != getProfile.infos[4]){
             PassData mAuthTask = new PassData(idStr, personName,
                     2, personPhotoUrl, coverUrl,
-                    activity, false, getProfile.infos[5], null, null, 0, null, null);
+                    activity, false, getProfile.infos[5], null, null, 0, null, null, null);
             mAuthTask.execute((Void) null);
         }
         SplashActivity.drawerName = personName;
@@ -135,7 +135,7 @@ public class InfoGetter {
                                 coverUrl != getProfile.infos[4]){
                             PassData mAuthTask = new PassData(email, name,
                                     2, profilePic, coverUrl,
-                                    activity, false, getProfile.infos[5], null, null, 0, null, null);
+                                    activity, false, getProfile.infos[5], null, null, 0, null, null, null);
                             mAuthTask.execute((Void) null);
                         }
                         SplashActivity.drawerName = name.replace("+", " ");

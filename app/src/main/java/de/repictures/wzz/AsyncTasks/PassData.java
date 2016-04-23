@@ -23,6 +23,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Locale;
 
 import de.repictures.wzz.MainJokes;
 import de.repictures.wzz.SplashActivity;
@@ -45,10 +46,12 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
     private final String about;
     private String devise;
     URLConnection urlConnection;
+    private Boolean female;
 
     public PassData(String email, String name, int platform, String personPic, String coverUrl, Activity activity,
-                    boolean firstConnect, String devise, ProgressBar progressbar, ImageView check,
-                    int crazyValue, String about, String vName) {
+                    Boolean firstConnect, String devise, ProgressBar progressbar, ImageView check,
+                    int crazyValue, String about, String vName, Boolean female) {
+        this.female = female;
         this.email = encoder(email);
         this.name = encoder(name);
         this.personPic = personPic;
@@ -84,7 +87,13 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
             name = URLEncoder.encode(name, "UTF-8");
             email = URLEncoder.encode(email, "UTF-8");
             int number;
-            if (firstConnect) number = 7; else number = 11;
+            String langage = null;
+            if (firstConnect) {
+                number = 7;
+                langage = URLEncoder.encode(Locale.getDefault().getDisplayLanguage(), "UTF-8");
+            } else {
+                number = 11;
+            }
             URL url = new URL(MainJokes.HIGHSCORE_SERVER_BASE_URL + "?number=" + number
                     + "&user=" + name
                     + "&email=" + email
@@ -95,7 +104,9 @@ public class PassData extends AsyncTask<Void, Void, Boolean> {
                     + "&key=" + liesKey()
                     + "&count=" + crazyValue
                     + "&inhalt=" + about
-                    + "&katego=" + vName);
+                    + "&katego=" + vName
+                    + "&lang=" + langage
+                    + "&votedUp=" + female); //gender
             Log.i(TAG, "doInBackground: " + url);
             urlConnection = url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());

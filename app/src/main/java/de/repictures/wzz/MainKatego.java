@@ -85,8 +85,8 @@ public class MainKatego extends AppCompatActivity {
 
         new Thread(new getPictures(SplashActivity.picUrl, drawerPb, null, this, true, true, false)).start();
         new Thread(new getPictures(SplashActivity.coverUrl, drawerCover, null, this, false, false, false)).start();
-        drawerEmail.setText(SplashActivity.drawerEmail);
-        drawerName.setText(SplashActivity.drawerName);
+        drawerEmail.setText(SplashActivity.drawerName);
+        drawerName.setText(SplashActivity.drawerEmail);
 
         final Fragment[] fragment = {null};
         final FragmentManager fragmentManager = getSupportFragmentManager();

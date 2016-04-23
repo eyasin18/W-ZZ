@@ -21,4 +21,6 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="navigation_bar_height">0dp</dimen>
+    <dimen name="email_card_min_height">304dp</dimen>
 </resources>

@@ -23,10 +23,10 @@ public class getProfileExtended {
         Query query = new Query("userPosting", profileKey);
         query.addSort("datum", Query.SortDirection.DESCENDING);
         List<Entity> userPosts = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
-        String profileStr = profile.getProperty("name") + "~" + profile.getProperty("photoUrl") + "~"
-                + profile.getProperty("email") + "~" + profile.getProperty("platform") + "~"
-                + profile.getProperty("coverUrl") + "~" + profile.getProperty("devise") + "~"
-                + profile.getProperty("about") + "~";
+        String profileStr = profile.getProperty("Visible Name") + "~" + profile.getProperty("name") + "~"
+                + profile.getProperty("photoUrl") + "~" + profile.getProperty("email") + "~"
+                + profile.getProperty("platform") + "~" + profile.getProperty("coverUrl") + "~"
+                + profile.getProperty("devise") + "~" + profile.getProperty("about") + "~";
         String output = "";
         for (Entity e : userPosts){
             String ratingKeyStr = (String) e.getProperty("VotingKey");

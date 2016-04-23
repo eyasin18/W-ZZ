@@ -38,6 +38,7 @@ public class dwspost extends HttpServlet {
         String voteCheckerStr = req.getParameter("voteChecker");
         String devise = req.getParameter("devise");
         String platformStr = req.getParameter("platform");
+        String lang = req.getParameter("lang");
 
         int platform;
         if (platformStr != null) platform = Integer.parseInt(platformStr);
@@ -117,7 +118,7 @@ public class dwspost extends HttpServlet {
                 new getProfile(datastore, key, email, resp);
                 break;
             case 7: //Profil hinzufügen
-                new postPlatformProfile(datastore, user, email, photoUrl, coverUrl, devise, isEmail, platform, count, resp);
+                new postPlatformProfile(datastore, user, email, photoUrl, coverUrl, devise, isEmail, platform, count, lang, votedUp, inhalt, resp);
                 break;
             case 8: //Witz melden
                 new postReport(datastore, key, profileKey, inhalt, resp);
@@ -168,10 +169,14 @@ public class dwspost extends HttpServlet {
                 Key personKey = KeyFactory.createKey("email", email);
                 Query query = new Query("profile", personKey);
                 List<Entity> profiles = datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
-                if (profiles.size() > 0){
-                    Entity e = profiles.get(0);
-                    resp.getWriter().println(e.getProperty("key"));
-                } else {
+                try {
+                    if (profiles.size() > 0){
+                        Entity e = profiles.get(0);
+                        resp.getWriter().println(e.getProperty("key"));
+                    } else {
+                        resp.getWriter().println("false");
+                    }
+                } catch (UnsupportedClassVersionError e){
                     resp.getWriter().println("false");
                 }
                 break;

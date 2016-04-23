@@ -95,8 +95,8 @@ public class MyProfileAsyncTask extends AsyncTask<String, Void, String[]>{
     @Override
     protected void onPostExecute(String[] response) {
         Log.i(TAG, "onPostExecute: " + Arrays.toString(response));
-        new Thread(new getPictures(response[0].split("~")[1], pb, null, activity, true, true, false)).start();
-        new Thread(new getPictures(response[0].split("~")[4], cover, null, activity, false, true, true)).start();
+        new Thread(new getPictures(response[0].split("~")[2], pb, null, activity, true, true, false)).start();
+        new Thread(new getPictures(response[0].split("~")[5], cover, null, activity, false, true, true)).start();
         scrollView.setVisibility(View.GONE);
         viewPager.setVisibility(View.VISIBLE);
         viewPager.setAdapter(new ProfilePagerAdapter(fragmentManager, tabTitles, response, userKey));

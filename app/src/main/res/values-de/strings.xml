@@ -190,4 +190,14 @@
     <string name="names_equal">Dein Deckname darf nicht dein echter Name sein</string>
     <string name="no_text">Dieser Nutzer hat noch keine Beschreibung hinzugefügt</string>
     <string name="saved">Änderungen gespeichert</string>
+    <string name="gender">Geschlecht</string>
+    <array name="genders">
+        <item>Keine Angaben</item>
+        <item>Weiblich</item>
+        <item>Männlich</item>
+    </array>
+    <string name="already_account">Du hast schon einen Account?</string>
+    <string name="create_account">Account erstellen</string>
+    <string name="name">Name</string>
+    <string name="c_profile">Profil vervollständigen</string>
 </resources>

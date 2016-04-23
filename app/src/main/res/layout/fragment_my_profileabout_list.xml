@@ -13,30 +13,33 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingBottom="62dp">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/profile_name_edit_label"
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/anonymous_name"
+            android:id="@+id/profile_name_caption"
+            android:paddingLeft="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:id="@+id/profile_name_edit"
-                android:layout_alignParentTop="true"
-                android:hint="@string/anonymous_name"/>
 
-        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_name"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="4dp"
+            android:text="@string/error"
+            android:layout_below="@+id/profile_name_caption"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/profile_vname_edit_label"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_below="@+id/profile_name_edit_label">
+            android:layout_below="@+id/profile_name">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
@@ -54,7 +57,7 @@
             android:layout_height="100dp"
             android:layout_below="@+id/profile_vname_edit_label">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/profile_status_edit"
@@ -72,7 +75,7 @@
             android:layout_below="@+id/profile_status_edit_label"
             android:paddingBottom="16dp">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/profile_about_edit"

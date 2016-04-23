@@ -55,7 +55,7 @@ public class Facebook {
                                         coverUrl = JOSource.getString("source");
                                         Log.d("facebook", email + "~" + personName + "~" + personPhotoUrl + " ~ " + coverUrl);
                                         String[] data = {email, personName,
-                                                "2", personPhotoUrl, coverUrl, "true", null};
+                                                "2", personPhotoUrl, coverUrl, "true", null, null, null, null};
                                         Intent i = new Intent(activity, StartActivity.class);
                                         i.putExtra("data", data);
                                         CheckData mAuthTask = new CheckData(activity, i, "2");

@@ -37,7 +37,7 @@ public class Twitter {
                                 + "~" + result.data.name
                                 + "~" + result.data.idStr);
                         String[] data = {result.data.idStr, result.data.name,
-                                "1", profilePic, result.data.profileBannerUrl, "true", null};
+                                "1", profilePic, result.data.profileBannerUrl, "true", null, null, null, null};
                         Intent i = new Intent(activity, StartActivity.class);
                         i.putExtra("data", data);
                         CheckData mAuthTask = new CheckData(activity, i, "1");

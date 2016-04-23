@@ -15,6 +15,10 @@ repositories {
 }
 
 apply plugin: 'java'
+compileJava {
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+}
 apply plugin: 'war'
 apply plugin: 'appengine'
 

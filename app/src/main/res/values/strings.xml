@@ -340,5 +340,17 @@
     <string name="names_equal">Pseudonym and your real name may not be the same</string>
     <string name="no_text">The user hasn\'t specified a description yet</string>
     <string name="saved">Saved changes</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_account">Already have an account?</string>
+    <string name="no_account">First time using W!ZZ?</string>
+    <string name="name">Name</string>
+    <string name="gender">Gender</string>
+    <string name="c_profile">Complete profile</string>
+    <string name="name_required">Name required</string>
+    <array name="genders">
+        <item>N/A</item>
+        <item>Female</item>
+        <item>Male</item>
+    </array>
 
 </resources>

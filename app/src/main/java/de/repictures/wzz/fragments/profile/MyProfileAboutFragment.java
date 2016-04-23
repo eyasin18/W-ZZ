@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Locale;
 
 import de.repictures.wzz.AsyncTasks.PassData;
@@ -22,9 +25,9 @@ import de.repictures.wzz.internet.getProfile;
 public class MyProfileAboutFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "AboutFragment";
-    private EditText nameEdit, statusEdit, aboutEdit, vnameEdit;
-    private TextInputLayout nameLayout, statusLayout, aboutLayout, vnameLayout;
-    private Button applyButton;
+    private EditText statusEdit, aboutEdit, vnameEdit;
+    private TextInputLayout statusLayout, aboutLayout, vnameLayout;
+    private TextView nameText;
 
     public MyProfileAboutFragment() {}
 
@@ -33,19 +36,23 @@ public class MyProfileAboutFragment extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_my_profileabout_list, container, false);
 
-        nameEdit = (EditText) rootView.findViewById(R.id.profile_name_edit);
-        nameLayout = (TextInputLayout) rootView.findViewById(R.id.profile_name_edit_label);
+        String[] profile = getArguments().getStringArray("profile");
+        nameText = (TextView) rootView.findViewById(R.id.profile_name);
         statusEdit = (EditText) rootView.findViewById(R.id.profile_status_edit);
         statusLayout = (TextInputLayout) rootView.findViewById(R.id.profile_status_edit_label);
         aboutEdit = (EditText) rootView.findViewById(R.id.profile_about_edit);
         aboutLayout = (TextInputLayout) rootView.findViewById(R.id.profile_about_edit_label);
         vnameEdit = (EditText) rootView.findViewById(R.id.profile_vname_edit);
         vnameLayout = (TextInputLayout) rootView.findViewById(R.id.profile_vname_edit_label);
-        nameEdit.setText(MainKatego.drawerName.getText());
-        if (getProfile.infos[5].length() > 4)statusEdit.setText(getProfile.infos[5]);
-        if (getProfile.infos[9].length() > 4)vnameEdit.setText(getProfile.infos[9]);
-        if (getProfile.infos[8].length() > 4)aboutEdit.setText(getProfile.infos[8]);
-        applyButton = (Button) rootView.findViewById(R.id.profile_apply_button);
+        try {
+            nameText.setText(URLDecoder.decode(profile[0], "UTF-8"));
+            if (profile[6].length() > 0)statusEdit.setText(URLDecoder.decode(profile[6], "UTF-8"));
+            if (profile[1].length() > 0) vnameEdit.setText(URLDecoder.decode(profile[1], "UTF-8"));
+            if (profile[7].length() > 0)aboutEdit.setText(URLDecoder.decode(profile[7], "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        Button applyButton = (Button) rootView.findViewById(R.id.profile_apply_button);
         applyButton.setOnClickListener(this);
 
         return rootView;
@@ -53,8 +60,6 @@ public class MyProfileAboutFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        nameLayout.setErrorEnabled(false);
-        nameLayout.setError("");
         statusLayout.setErrorEnabled(false);
         statusLayout.setError("");
         aboutLayout.setErrorEnabled(false);
@@ -62,10 +67,10 @@ public class MyProfileAboutFragment extends Fragment implements View.OnClickList
         vnameLayout.setErrorEnabled(false);
         vnameLayout.setError("");
         if (checkInputs()){} else {
-            PassData mAuthTask = new PassData(getProfile.infos[2], nameEdit.getText().toString(),
+            PassData mAuthTask = new PassData(getProfile.infos[2], nameText.getText().toString(),
                     Integer.parseInt(getProfile.infos[3]), SplashActivity.picUrl, SplashActivity.coverUrl,
                     getActivity(), false, statusEdit.getText().toString(), null, null, 0, aboutEdit.getText().toString(),
-                    vnameEdit.getText().toString());
+                    vnameEdit.getText().toString(), null);
             mAuthTask.execute((Void) null);
             Snackbar
                     .make(MyJokesFragment.myJokesCL, R.string.saved, Snackbar.LENGTH_LONG)
@@ -73,16 +78,7 @@ public class MyProfileAboutFragment extends Fragment implements View.OnClickList
         }
     }
 
-    private boolean checkInputs() {
-        if (nameEdit.getText().toString().length() < 5){
-            nameLayout.setErrorEnabled(true);
-            nameLayout.setError(getActivity().getResources().getString(R.string.name_too_short));
-            return true;
-        } else if (checkIllegalCharacters(nameEdit.getText().toString())){
-            nameLayout.setErrorEnabled(true);
-            nameLayout.setError(illegalCharacters(getActivity().getResources().getString(R.string.name_illegal)));
-            return true;
-        } else if (statusEdit.getText().toString().length() < 5){
+    private boolean checkInputs() {if (statusEdit.getText().toString().length() < 5){
             statusLayout.setErrorEnabled(true);
             statusLayout.setError(getActivity().getResources().getString(R.string.status_too_short));
             return true;
@@ -94,12 +90,6 @@ public class MyProfileAboutFragment extends Fragment implements View.OnClickList
             vnameLayout.setErrorEnabled(true);
             vnameLayout.setError(illegalCharacters(getActivity().getResources().getString(R.string.vname_illegal)));
             return true;
-        } else if (nameEdit.getText().toString().contentEquals(vnameEdit.getText().toString())){
-            nameLayout.setErrorEnabled(true);
-            nameLayout.setError(getActivity().getResources().getString(R.string.names_equal));
-            vnameLayout.setErrorEnabled(true);
-            return true;
-
         } else if (checkIllegalCharacters(statusEdit.getText().toString())){
             statusLayout.setErrorEnabled(true);
             statusLayout.setError(illegalCharacters(getActivity().getResources().getString(R.string.status_illegal)));

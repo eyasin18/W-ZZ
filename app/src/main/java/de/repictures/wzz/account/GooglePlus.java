@@ -40,7 +40,7 @@ public class GooglePlus {
         String personName = person.getDisplayName();
         String profilePic = person.getImage().getUrl().substring(0, personName.length() - 2) + 500;
         String[] data = {person.getId(), personName,
-                "3", profilePic, coverUrl, "true", null};
+                "3", profilePic, coverUrl, "true", null, null, null, null};
         Intent i = new Intent(activity, StartActivity.class);
         i.putExtra("data", data);
         CheckData mAuthTask = new CheckData(activity, i, "3");
