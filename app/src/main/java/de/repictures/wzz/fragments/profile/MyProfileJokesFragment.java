@@ -26,15 +26,18 @@ public class MyProfileJokesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_my_profile_jokes, container, false);
-        String[] jokes = getArguments().getStringArray("jokes");
-        Log.i(TAG, "onCreateView: " + Arrays.toString(jokes));
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.profile_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-        RecyclerView.Adapter recyclerAdapter = new MyJokesAdapter(jokes, getActivity());
+        String[] jokes = getArguments().getStringArray("jokes");
         if (jokes != null && jokes.length > 0){
+            Log.i(TAG, "onCreateView: " + Arrays.toString(jokes));
+            recyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+            recyclerView.setLayoutManager(mLayoutManager);
+            RecyclerView.Adapter recyclerAdapter = new MyJokesAdapter(jokes, getActivity());
             recyclerView.setAdapter(recyclerAdapter);
+        } else {
+            rootView.findViewById(R.id.no_jokes_text).setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         }
         return rootView;
     }

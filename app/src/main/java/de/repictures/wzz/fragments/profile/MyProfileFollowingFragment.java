@@ -18,16 +18,19 @@ public class MyProfileFollowingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_following_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_following_list, container, false);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.list);
         String[] abos = getArguments().getStringArray("following");
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        if (abos != null && abos.length > 0) {
+            recyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+            recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.setAdapter(new MyProfileFollowingAdapter(abos, getActivity()));
+        } else {
+            rootView.findViewById(R.id.no_abos_text).setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         }
-        return view;
+        return rootView;
     }
 }

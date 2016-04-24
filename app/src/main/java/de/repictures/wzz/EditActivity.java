@@ -19,13 +19,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Random;
 
 public class EditActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "EditActivity";
     TextInputEditText nameEdit, statusEdit, aboutEdit;
-    TextInputLayout nameLayout;
+    TextInputLayout nameLayout, statusLayout, aboutLayout;
     FloatingActionButton fab;
     Boolean gender = null;
     String[] data;
@@ -47,7 +48,9 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         nameEdit.setText(data[1]);
         nameLayout = (TextInputLayout) findViewById(R.id.edit_vname_edit_label);
         statusEdit = (TextInputEditText) findViewById(R.id.edit_status_edit);
+        statusLayout = (TextInputLayout) findViewById(R.id.edit_status_edit_label);
         aboutEdit = (TextInputEditText) findViewById(R.id.edit_about_edit);
+        aboutLayout = (TextInputLayout) findViewById(R.id.edit_about_edit_label) ;
         fab = (FloatingActionButton) findViewById(R.id.edit_fab);
         fab.setOnClickListener(this);
         rnd = new Random();
@@ -64,10 +67,12 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
     private void getDataAndFinish() {
         nameLayout.setErrorEnabled(false);
+        aboutLayout.setErrorEnabled(false);
+        statusLayout.setErrorEnabled(false);
         if (nameEdit.getText().length() == 0){
             nameLayout.setErrorEnabled(true);
             nameLayout.setError(getResources().getString(R.string.name_required));
-        } else {
+        } else if (!checkInputs()){
             data[1] = nameEdit.getText().toString();
             if (gender != null) data[7] = String.valueOf(gender);
             else data[7] = String.valueOf(getRandomGender());
@@ -101,5 +106,57 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean getRandomGender() {
         return rnd.nextBoolean();
+    }
+
+    private boolean checkInputs() {
+        if (nameEdit.getText().toString().length() < 1){
+            nameLayout.setErrorEnabled(true);
+            nameLayout.setError(getResources().getString(R.string.vname_too_short));
+            return true;
+        } else if (checkIllegalCharacters(nameEdit.getText().toString())){
+            nameLayout.setErrorEnabled(true);
+            nameLayout.setError(illegalCharacters(getResources().getString(R.string.vname_illegal)));
+            return true;
+        } else if (checkIllegalCharacters(statusEdit.getText().toString())){
+            statusLayout.setErrorEnabled(true);
+            statusLayout.setError(illegalCharacters(getResources().getString(R.string.status_illegal)));
+            return true;
+        } else if (checkIllegalCharacters(aboutEdit.getText().toString())){
+            aboutLayout.setErrorEnabled(true);
+            aboutLayout.setError(illegalCharacters(getResources().getString(R.string.about_illegal)));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private CharSequence illegalCharacters(String string) {
+        if (Locale.getDefault().getLanguage().contentEquals(Locale.GERMAN.getLanguage())){
+            return string + getIllegalCharacters() + " " + getResources().getString(R.string.contain);
+        } else {
+            return string + getIllegalCharacters();
+        }
+    }
+
+    private String getIllegalCharacters() {
+        String[] illegals = getResources().getStringArray(R.array.forbidden_characters);
+        String illegal = "";
+        for (int i = 0; i < illegals.length; i++){
+            if (i == illegals.length - 1) illegal += " " + getResources().getString(R.string.or) + " ";
+            else if (i != 0) illegal += ", ";
+            else illegal += " ";
+            illegal += illegals[i];
+        }
+        return illegal;
+    }
+
+    private boolean checkIllegalCharacters(String string) {
+        String[] illegals = getResources().getStringArray(R.array.forbidden_characters);
+        for (String illegal : illegals) {
+            if (string.contains(illegal)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

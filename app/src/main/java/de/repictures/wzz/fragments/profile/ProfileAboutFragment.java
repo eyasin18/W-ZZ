@@ -17,8 +17,12 @@ public class ProfileAboutFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile_about, container, false);
         TextView aboutText = (TextView) rootView.findViewById(R.id.about_text);
-        String about = getArguments().getString("about");
-        aboutText.setText(about);
+        TextView statusText = (TextView) rootView.findViewById(R.id.devise_text);
+        try {
+            String info[] = getArguments().getString("about").split("~");
+            if (info[1].length() > 0) aboutText.setText(info[1]);
+            if (info[0].length() > 0) statusText.setText(info[0]);
+        } catch (NullPointerException ignore){}
         return rootView;
     }
 

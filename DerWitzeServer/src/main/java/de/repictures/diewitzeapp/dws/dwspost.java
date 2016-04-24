@@ -180,6 +180,8 @@ public class dwspost extends HttpServlet {
                     resp.getWriter().println("false");
                 }
                 break;
+            case 18:
+                new addName(inhalt, datastore, count, resp);
         }
     }
 }

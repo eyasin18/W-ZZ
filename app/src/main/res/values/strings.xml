@@ -326,13 +326,13 @@
     <string name="no_jokes">No jokes available</string>
     <string name="anonymous_name">Pseudonym</string>
     <string name="status">Status</string>
-    <string name="name_too_short">Name must contain at least 5 characters</string>
+    <string name="name_too_short">Name must contain at least 1 characters</string>
     <string name="real_name">Real name</string>
-    <string name="status_too_short">Your status must contain at least 5 characters</string>
+    <string name="status_too_short">Your status must contain at least 1 characters</string>
     <string name="vname_too_short">No name is that short!</string>
-    <string name="about_too_short">About me must contain at least 5 characters</string>
+    <string name="about_too_short">About me must contain at least 1 characters</string>
     <string name="name_illegal">Name may not contain </string>
-    <string name="vname_illegal">Real name may not contain </string>
+    <string name="vname_illegal">Name may not contain </string>
     <string name="or">or</string>
     <string name="status_illegal">Status may not contain </string>
     <string name="about_illegal">About me may not contain </string>
@@ -347,6 +347,8 @@
     <string name="gender">Gender</string>
     <string name="c_profile">Complete profile</string>
     <string name="name_required">Name required</string>
+    <string name="no_abos">No subscriptions</string>
+    <string name="no_status">The user hasn\'t specified a status yet</string>
     <array name="genders">
         <item>N/A</item>
         <item>Female</item>

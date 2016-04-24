@@ -55,7 +55,7 @@ public class WitzeNachKategoAlle {
             if (voters.contains(profileKey)) voted = true;
             ArrayList<String> reporters = (ArrayList<String>) rating.getProperty("Reporters");
             if (reporters.contains(profileKey)) reported = true;
-            output += false + "~" + user.getProperty("name") + "~" + e.getProperty("inhalt")+ "~"
+            output += false + "~" + user.getProperty("Visible Name") + "~" + e.getProperty("inhalt")+ "~"
                     + rating.getProperty("Votes") + "~" + rating.getProperty("Reports") + "~"
                     + e.getProperty("key") + "~" + user.getProperty("photoUrl") + "~" + user.getProperty("devise") + "~"
                     + voted + "~" + reported + "~" + e.getProperty("VotingKey") + "~" + e.getProperty("user") + "</we>";
@@ -94,7 +94,7 @@ public class WitzeNachKategoAlle {
             if (voters.contains(profileKey)) voted = true;
             ArrayList<String> reporters = (ArrayList<String>) rating.getProperty("Reporters");
             if (reporters.contains(profileKey)) reported = true;
-            output += false + "~" + user.getProperty("name") + "~" + e.getProperty("inhalt") + "~"
+            output += false + "~" + user.getProperty("Visible Name") + "~" + e.getProperty("inhalt") + "~"
                     + rating.getProperty("Votes") + "~" + rating.getProperty("Reports") + "~"
                     + e.getProperty("key") + "~" + user.getProperty("photoUrl") + "~" + user.getProperty("devise") + "~"
                     + voted + "~" + reported + "~" + e.getProperty("VotingKey") + "~" + e.getProperty("user") + "</we>";
@@ -133,7 +133,7 @@ public class WitzeNachKategoAlle {
             if (voters.contains(profileKey)) voted = true;
             ArrayList<String> reporters = (ArrayList<String>) rating.getProperty("Reporters");
             if (reporters.contains(profileKey)) reported = true;
-            output += false + "~" + user.getProperty("name") + "~" + e.getProperty("inhalt") + "~"
+            output += false + "~" + user.getProperty("Visible Name") + "~" + e.getProperty("inhalt") + "~"
                     + rating.getProperty("Votes") + "~" + rating.getProperty("Reports") + "~"
                     + e.getProperty("key") + "~" + user.getProperty("photoUrl") + "~" + user.getProperty("devise") + "~"
                     + voted + "~" + reported + "~" + e.getProperty("VotingKey") + "~" + e.getProperty("user") + "</we>";

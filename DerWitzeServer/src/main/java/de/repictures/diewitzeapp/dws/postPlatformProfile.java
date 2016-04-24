@@ -44,7 +44,7 @@ public class postPlatformProfile {
             userProfile.setProperty("crazyValue", count);
             userProfile.setProperty("isEmail", isEmail);
             userProfile.setProperty("level", 0);
-            new GetRandomName(userProfile, lang, female);
+            new GetRandomName(userProfile, lang, female, datastore);
             if (!about.equals("null"))userProfile.setProperty("about", about);
             else userProfile.setProperty("about", null);
             if (!devise.equals("null"))userProfile.setProperty("devise", devise);

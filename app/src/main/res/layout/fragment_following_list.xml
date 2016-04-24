@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
-    android:name="de.repictures.wzz.fragments.ProfileFollowingFragment"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutManager="LinearLayoutManager"
-    tools:context=".fragments.profile.MyProfileFollowingFragment"
-    tools:listitem="@layout/fragment_following"
-    android:theme="@style/Theme.AppCompat.Light" />
+    android:layout_width="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_abos"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:id="@+id/no_abos_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_centerHorizontal="true"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:name="de.repictures.wzz.fragments.ProfileFollowingFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".fragments.profile.MyProfileFollowingFragment"
+        tools:listitem="@layout/fragment_following"
+        android:theme="@style/Theme.AppCompat.Light" />
+
+</RelativeLayout>

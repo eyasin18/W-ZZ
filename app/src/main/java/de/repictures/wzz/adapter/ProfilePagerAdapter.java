@@ -57,15 +57,11 @@ public class ProfilePagerAdapter extends FragmentStatePagerAdapter {
                 afragment.setArguments(bundle);
                 return afragment;
             case 2:
-                if (abos != null){
-                    bundle = new Bundle();
-                    bundle.putStringArray("following", abos);
-                    MyProfileFollowingFragment ffragment = new MyProfileFollowingFragment();
-                    ffragment.setArguments(bundle);
-                    return ffragment;
-                } else {
-                    return new Fragment();
-                }
+                bundle = new Bundle();
+                bundle.putStringArray("following", abos);
+                MyProfileFollowingFragment ffragment = new MyProfileFollowingFragment();
+                ffragment.setArguments(bundle);
+                return ffragment;
         }
     }
 

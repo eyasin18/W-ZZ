@@ -67,10 +67,10 @@ public class MyProfileAboutFragment extends Fragment implements View.OnClickList
         vnameLayout.setErrorEnabled(false);
         vnameLayout.setError("");
         if (checkInputs()){} else {
-            PassData mAuthTask = new PassData(getProfile.infos[2], nameText.getText().toString(),
+            PassData mAuthTask = new PassData(getProfile.infos[2], vnameEdit.getText().toString(),
                     Integer.parseInt(getProfile.infos[3]), SplashActivity.picUrl, SplashActivity.coverUrl,
                     getActivity(), false, statusEdit.getText().toString(), null, null, 0, aboutEdit.getText().toString(),
-                    vnameEdit.getText().toString(), null);
+                    nameText.getText().toString(), null);
             mAuthTask.execute((Void) null);
             Snackbar
                     .make(MyJokesFragment.myJokesCL, R.string.saved, Snackbar.LENGTH_LONG)

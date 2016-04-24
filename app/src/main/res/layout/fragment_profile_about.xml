@@ -4,13 +4,30 @@
     android:layout_height="match_parent"
     tools:context="de.repictures.wzz.fragments.profile.ProfileAboutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/about_text"
-        android:text="@string/no_text" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:id="@+id/devise_text"
+            android:text="@string/no_status" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:layout_below="@+id/devise_text"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:id="@+id/about_text"
+            android:text="@string/no_text" />
+
+    </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

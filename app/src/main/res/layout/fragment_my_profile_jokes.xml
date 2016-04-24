@@ -4,6 +4,16 @@
     android:layout_height="match_parent"
     tools:context=".fragments.profile.MyProfileJokesFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_jokes"
+        android:padding="16dp"
+        android:id="@+id/no_jokes_text"
+        android:visibility="gone"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_gravity="center_horizontal"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/profile_recycler_view"
         android:layout_width="match_parent"

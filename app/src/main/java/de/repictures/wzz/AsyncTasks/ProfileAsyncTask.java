@@ -96,8 +96,8 @@ public class ProfileAsyncTask extends AsyncTask<String, Void, String[]>{
     @Override
     protected void onPostExecute(String[] response) {
         Log.i(TAG, "onPostExecute: " + Arrays.toString(response));
-        new Thread(new getPictures(response[0].split("~")[1], pb, null, activity, true, true, false)).start();
-        new Thread(new getPictures(response[0].split("~")[4], cover, null, activity, false, true, true)).start();
+        new Thread(new getPictures(response[0].split("~")[2], pb, null, activity, true, true, false)).start();
+        new Thread(new getPictures(response[0].split("~")[5], cover, null, activity, false, true, true)).start();
         scrollView.setVisibility(View.GONE);
         viewPager.setVisibility(View.VISIBLE);
         viewPager.setAdapter(new ProfilePagerAdapter(fragmentManager, tabTitles, response));
@@ -117,13 +117,17 @@ public class ProfileAsyncTask extends AsyncTask<String, Void, String[]>{
             this.tabTitles = tabTitles;
             String[] response = rawSplit[0].split("~");
             Log.d(TAG, "ProfilePagerAdapter: " + Arrays.toString(response));
-            abos = rawSplit[1].split("</~>");
-            List<String> preprofile = new LinkedList<>(Arrays.asList(Arrays.copyOfRange(response, 0, 7)));
+            try {
+                abos = rawSplit[1].split("</~>");
+            } catch (ArrayIndexOutOfBoundsException ignore){
+                abos = null;
+            }
+            List<String> preprofile = new LinkedList<>(Arrays.asList(Arrays.copyOfRange(response, 0, 8)));
             preprofile.add(userKey);
             this.profileInfos = new String[preprofile.size()];
             this.profileInfos = preprofile.toArray(this.profileInfos);
             Log.d(TAG, "ProfilePagerAdapter: profileInfos: " + Arrays.toString(profileInfos));
-            this.jokes = Arrays.copyOfRange(response, 7, response.length);
+            this.jokes = Arrays.copyOfRange(response, 8, response.length);
             Log.d(TAG, "ProfilePagerAdapter: jokes: " + Arrays.toString(jokes));
 
         }
@@ -142,7 +146,7 @@ public class ProfileAsyncTask extends AsyncTask<String, Void, String[]>{
                     return jfragment;
                 case 1:
                     bundle = new Bundle();
-                    bundle.putString("about", profileInfos[6]);
+                    bundle.putString("about", profileInfos[6] + "~" + profileInfos[7]);
                     ProfileAboutFragment afragment = new ProfileAboutFragment();
                     afragment.setArguments(bundle);
                     return afragment;

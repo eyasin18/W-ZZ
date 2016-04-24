@@ -176,16 +176,16 @@
     <string name="welcome">W!ZZ</string>
     <string name="about_illegal">Über mich darf nicht </string>
     <string name="contain"> beinhalten</string>
-    <string name="about_too_short">Über mich muss mindestens 5 Zeichen lang sein</string>
+    <string name="about_too_short">Über mich muss mindestens 1 Zeichen lang sein</string>
     <string name="anonymous_name">Deckname</string>
     <string name="name_illegal">Dein Deckname darf nicht </string>
-    <string name="name_too_short">Dein Deckname muss mindestens 5 Zeichen lang sein</string>
+    <string name="name_too_short">Dein Deckname muss mindestens 1 Zeichen lang sein</string>
     <string name="or">oder</string>
-    <string name="real_name">Echter Name</string>
+    <string name="real_name">Name</string>
     <string name="status">Status</string>
     <string name="status_illegal">Dein Status darf nicht </string>
-    <string name="status_too_short">Dein Status muss mindestens 5 Zeichen lang sein</string>
-    <string name="vname_illegal">Dein echter Name darf nicht </string>
+    <string name="status_too_short">Dein Status muss mindestens 1 Zeichen lang sein</string>
+    <string name="vname_illegal">Dein Name darf nicht </string>
     <string name="vname_too_short">Kein Name ist so kurz!</string>
     <string name="names_equal">Dein Deckname darf nicht dein echter Name sein</string>
     <string name="no_text">Dieser Nutzer hat noch keine Beschreibung hinzugefügt</string>
@@ -200,4 +200,7 @@
     <string name="create_account">Account erstellen</string>
     <string name="name">Name</string>
     <string name="c_profile">Profil vervollständigen</string>
+    <string name="name_required">Pflichtfeld</string>
+    <string name="no_abos">Keine Abos</string>
+    <string name="no_account">Kein W!ZZ Account?</string>
 </resources>
